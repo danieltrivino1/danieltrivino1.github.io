@@ -1,0 +1,1653 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-default_background {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="a4f3ffde-1741-4a89-87b8-499224c5d624" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1628853210688-acf6bfeb5daf?ixlib=rb-4.0.3&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb" style="object-position:center 23.709999999999997%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">🐍</span></div><h1 class="page-title">Python</h1><p class="page-description"></p></header><div class="page-body"><ul id="7ceb639e-aa3b-4b6b-b494-794c33bda9a4" class="toggle"><li><details details=""><summary>Download and Install Python</summary><p id="d25db62c-a1e8-451b-a823-03a8a8b308ff" class=""><mark class="highlight-teal_background">Sources:</mark></p><ul id="685c8690-8542-4eb5-8b12-f1535f2ca605" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.dataquest.io/blog/installing-python-on-windows/">Downloading and Installing Python on Windows – Dataquest</a></li></ul><p id="40f4da9a-527d-4d0f-8dad-c3a3714711d7" class=""><mark class="highlight-red">NOTE: It is possible to have two versions of Python installed in the computer by naming the executable files differently</mark></p></details></li></ul><ul id="985f6c52-fcdd-4e27-b697-cb18251c28b3" class="toggle"><li><details details=""><summary>Uninstall Python</summary><p id="4e09bf6a-0484-4c35-b682-f1cb56bd36ca" class=""><mark class="highlight-teal_background">Sources</mark></p><ul id="4fa7a14c-26e4-4c83-9210-0f4dbaa2c562" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.pythoncentral.io/how-to-uninstall-python/">How to Uninstall Python | Python Central</a></li></ul><p id="6c95d41e-9708-4b4b-9bdd-7390f8ff0b3e" class="">These steps are for Windows:</p><p id="d66b435e-3fea-4027-9283-bf67209282e8" class=""><mark class="highlight-teal_background">Step 1: Navigate to the Control Panel</mark></p><p id="08326969-5f03-42ac-8db5-d49f38757bb4" class=""><mark class="highlight-teal_background">Step 2: Navigate to “Uninstall a program” under “Programs”</mark></p><p id="d09bf273-8e61-46fc-9a7f-c6942b4dcf1d" class=""><mark class="highlight-teal_background">Step 3: Navigate to the program and click “Uninstall”</mark></p><figure id="04ff4296-993e-43ac-aea9-164d87754908" class="image"><a href="Untitled.png"><img style="width:288px" src="Untitled.png"/></a></figure><p id="5289c35a-5248-4e54-8052-07f0c16c9b3f" class=""><mark class="highlight-teal_background">Step 4: Remove Python from Path</mark></p><p id="4b38543a-713a-481a-aa69-e139edf05566" class="">The Python uninstaller automatically removes Python from Path when it runs. That said, it is best to check whether Python has been removed from Path</p><ol type="1" id="8d4d3c4a-889b-4237-8cee-81b3428563a7" class="numbered-list" start="1"><li>Press the Windows key and enter “environment variables.” Launch the settings menu in the Control Panel<figure id="95b307a3-21d5-439c-9289-12cd2c0edd9c" class="image"><a href="Untitled%201.png"><img style="width:345px" src="Untitled%201.png"/></a></figure></li></ol><ol type="1" id="a946de37-2e94-4f0f-a3a5-3a4ac6c3f34f" class="numbered-list" start="2"><li>A “System Properties” menu will appear. Find and click the “Environment Variables” button</li></ol><ol type="1" id="8cd3a82c-267e-484f-bb70-07d8929c99e2" class="numbered-list" start="3"><li>Highlight the “Path” variable in the system variable section by left-clicking it. Then press the “Edit” button</li></ol><figure id="ad77e47e-816f-4795-9413-252694b846a8" class="image"><a href="Untitled%202.png"><img style="width:384px" src="Untitled%202.png"/></a></figure><ol type="1" id="dec47b35-0858-41c8-9723-721492db7f3e" class="numbered-list" start="4"><li>If you see a path of the Python bin folder in the menu, remove it by selecting it and pressing the “Delete” button on the right side of the menu</li></ol><p id="7f51fcbe-56af-408c-98ee-dc1fd252c925" class="">
+</p></details></li></ul><ul id="48499cfc-4cc2-4be7-8813-28f2a2ccc8ec" class="toggle"><li><details details=""><summary>Paths</summary><p id="fab68317-9148-4db8-b19f-9e6691c81f5b" class=""><mark class="highlight-teal_background">Absolute Path:</mark></p><p id="c54ab36a-dea9-4315-bb19-08b86f6d8cf6" class="">An absolute path refers to the complete details needed to locate a file or folder, starting from the root element and ending with the other subdirectories.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8192f32d-dc91-40ab-b823-57634f2b96b7" class="code"><code class="language-Python">&#x27;C:/Users/John/Documents/file1.pdf&#x27;</code></pre><p id="6a2f4684-4ac9-4a23-8903-11c971b72190" class=""><mark class="highlight-teal_background">Relative Path:</mark></p><p id="45950dc7-a01e-46e7-a4a3-4778c27d4f4a" class="">A relative path refers to the location that is relative to a current directory.</p><ol type="1" id="13507c55-75bc-4dcc-9b69-74eebd66402e" class="numbered-list" start="1"><li><strong>Current Directory:</strong> if your Python script is located in <code><strong>C:/Users/John/Documents/</strong></code>, and you have a PDF named <code><strong>file1.pdf</strong></code> in the same directory, you can use:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0a4f2919-5d66-4583-b3de-78fa84f0d885" class="code"><code class="language-Python">&#x27;./file1.pdf&#x27; or &#x27;file1.pdf&#x27; </code></pre></li></ol><ol type="1" id="f9fbad03-58cd-418b-ae38-a39ca9a0f46a" class="numbered-list" start="2"><li><strong>Subdirectory: </strong>if your Python script is located in <code><strong>C:/Users/John/Documents/</strong></code>, and you have a PDF named <code><strong>file1.pdf</strong></code> in <code><strong>C:/Users/John/Documents/extra_files</strong></code>, you can use:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0b51c65f-f6b8-4b5d-85f1-3d0b97e0b694" class="code"><code class="language-Python">&#x27;./extra_files/file1.pdf&#x27;</code></pre></li></ol><ol type="1" id="c3c62d00-4e08-472f-997e-8f168bc711eb" class="numbered-list" start="3"><li><strong>Parent Directory: </strong>if your Python script is located in <code><strong>C:/Users/John/Documents/</strong></code>, and you have a PDF named <code><strong>file1.pdf</strong></code> in <code><strong>C:/Users/John/extra_files</strong></code>, you can use:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="93d2a19a-f0b5-44b0-91ea-b7f06d79bc54" class="code"><code class="language-Python">&#x27;../extra_files/file1.pdf&#x27;</code></pre></li></ol><p id="c34e01c6-1060-4168-8239-4d956cf1623d" class=""><strong>Note</strong>: The way you specify paths might slightly differ based on the operating system. The examples above use forward slashes (<code><strong>/</strong></code>), which work on both Windows and Unix-based systems. However, traditionally, Windows uses backslashes (<code><strong>\</strong></code>). If you use backslashes in Python strings, remember to escape them (<code><strong>\\</strong></code>) or use raw strings (<code><strong>r&#x27;C:\path\to\directory&#x27;</strong></code>).</p></details></li></ul><ul id="c70c54d7-6b12-4d64-95d6-7edfd092dab7" class="toggle"><li><details details=""><summary>Python Versions</summary><p id="b83ba163-3129-4b7a-a607-ba8ccd8c04ee" class="">There are two ways to know the version of Python that is being used:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8f36dd21-130c-4378-abff-f221a0f9d2d5" class="code"><code class="language-Python">1. First Way:
+	
+		PS C:\Users\dpedr&gt; python
+		Python 3.10.7 (tags/v3.10.7:6cc6b13, Sep  5 2022, 14:08:36) [MSC v.1933 64 bit (AMD64)] on win32
+		Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+		&gt;&gt;&gt;
+
+2. Second Way:
+
+		PS C:\Users\dpedr&gt; Python -V
+		Python 3.10.7</code></pre><p id="fb6b1268-17e6-45f3-91d2-eb353c0bed4d" class="">Locate the version Python being used in the machine (This command only works on Linux):</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fbb573b7-f3dd-4a39-bdae-04b82cf002ab" class="code"><code class="language-Python">$ which python
+/c/Users/dpedr/AppData/Local/Programs/Python/Python310/python</code></pre></details></li></ul><ul id="7934d624-e8ce-4d73-868c-bd1cd208dbe7" class="toggle"><li><details details=""><summary>Virtual Environment</summary><p id="c101c5bb-7941-4836-ba2c-bac104cae296" class="">There are many of choices (<code>venv</code>, <code>pipenv</code>, <code>conda</code>, <code>poetry</code>, etc.) and they are all great.</p><p id="c6913e64-5618-41a1-94a4-6522e738e679" class=""><mark class="highlight-red">NOTE: Virtual environment provides a set of packages to be used when running a given python program. Thus, python programs should not be included inside the virtual environment folder.</mark></p><p id="c298a709-80ba-4889-bc4e-29659e780ed6" class=""><mark class="highlight-teal_background">Virtual Environment Videos: </mark></p><ul id="1538d5f3-9dd9-42f9-84b4-d8162a049c8c" class="bulleted-list"><li style="list-style-type:disc"><a href="https://code.visualstudio.com/docs/python/environments">Using Python Environments in Visual Studio Code</a></li></ul><ul id="b5640bef-4e70-4c0d-a2c2-7bb12b2ac6c3" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.youtube.com/watch?v=KxvKCSwlUv8">The Complete Guide to Python Virtual Environments! - YouTube</a></li></ul><p id="49effc19-ab85-4378-802b-5c872f3a0377" class=""><mark class="highlight-teal_background">Create Virtual Environment:</mark></p><p id="10986a2f-a511-8064-8e2f-c57a826bc380" class=""><code>poetry</code> </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="10986a2f-a511-8079-87c6-ddbd55d70879" class="code"><code class="language-Plain Text"></code></pre><p id="1be737db-8a29-43f6-86c0-f4e276ba0e97" class=""><code>venv</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2d948768-2005-40a8-bca9-5e3e7fb59447" class="code"><code class="language-Plain Text">Python -m venv name_of_the_environment</code></pre><p id="f16d13f7-7585-4d83-aec3-fa96ab897f91" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5d51ed43-a313-4935-abfc-4bbe74934fa6" class="code"><code class="language-Plain Text">conda create -n name_of_the_environment
+
+conda create -n name_of_the_environment python=3.10   # Create the environment with a given python version
+
+# Create an environment from a yml file
+conda env create -n environment.yml</code></pre><p id="ee9df7af-3ab7-4ef3-8281-015971bca0a3" class=""><mark class="highlight-teal_background">Activate Virtual Environment:</mark></p><p id="428a115c-1d33-49a0-b011-2594b9a9f130" class=""><code>venv</code></p><ol type="1" id="af49feb9-5801-443c-b888-335e9eda70dc" class="numbered-list" start="1"><li>Change the Execution Policy in PowerShell (Run as Admin) to <mark class="highlight-orange">RemoteSigned</mark>: <a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-7.2">Set-ExecutionPolicy (Microsoft.PowerShell.Security) - PowerShell | Microsoft Docs</a><figure id="79847a17-7201-4004-ab25-8b59bf848820" class="image"><a href="Untitled%203.png"><img style="width:576px" src="Untitled%203.png"/></a></figure></li></ol><ol type="1" id="17384f66-3ade-46f5-a972-0616116fb3c8" class="numbered-list" start="2"><li>Execute activation command in the terminal (Use Command Prompt terminal in Visual Studio Code)</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e26a3d4e-c997-4ddc-b006-605c6a15d8e8" class="code"><code class="language-Plain Text">C:\Users\...\name_of_the_environment&gt;Scripts\activate.bat (If activating from Command Prompt)
+
+C:\Users\...\C:\Users\...\name_of_the_environment&gt;Scripts\activate.ps1 (If activating from PowerShell)</code></pre><p id="ccdb273e-0298-4463-9b6c-a1860473ecd8" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="45747b38-4be2-486b-8029-6bbc9d372788" class="code"><code class="language-Plain Text">conda activate name_of_the_environment</code></pre><p id="ea6bd8da-4be2-4d14-b14f-a7cbbeec41ad" class="">[conda] is the package manager provided by the <a href="https://www.anaconda.com/">Anaconda</a> python distribution. Unfortunately, it is currently <a href="https://github.com/conda/conda/issues/9707">not in very good shape</a>. Instead, we&#x27;ll use the more recent and much faster <a href="https://github.com/mamba-org/mamba">mamba</a> package manager to install packages.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="297fd0e3-a028-4917-b9a0-9933041989ff" class="code"><code class="language-Plain Text">conda install -c conda-forge mamba</code></pre><p id="082d6692-d352-48fe-832c-77d0e67234e4" class=""><mark class="highlight-teal_background">Deactivate Virtual Environment:</mark></p><p id="e0f1b105-12af-4e87-b4d7-dabda7647d31" class=""><code>venv</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="89682430-c266-40d1-876d-332620309723" class="code"><code class="language-Plain Text">deactivate  # Just type this word in the terminal</code></pre><p id="67821866-07fb-43ed-a8a6-f4f561551997" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4fb5c96d-6738-47cb-b684-f2e1901e820d" class="code"><code class="language-Plain Text">conda deactivate</code></pre><p id="4e268368-3224-4e33-b9a4-732f15a154f1" class=""><mark class="highlight-teal_background">Delete/Remove Virtual Environment:</mark></p><p id="f1256457-5df5-4945-a824-c9de851c9b01" class=""><code>venv</code></p><p id="aa6b0f4f-d384-40f2-b4bb-7d8e7e046e2f" class="">Delete the folder that contains the virtual environment.</p><p id="9d394c44-bfad-4f86-98c8-a081c0508112" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="167757f1-530a-42d1-ac61-030ee8b43f71" class="code"><code class="language-Plain Text">conda remove -n name_of_the_environment --all</code></pre><p id="5dab4bce-9c88-4866-a38f-ebde027eb964" class=""><mark class="highlight-teal_background">Clean Virtual Environment:</mark></p><p id="9e86e129-0503-41f1-830b-925560d5952e" class=""><code>venv</code></p><p id="826930c4-c7ca-4837-b113-c9228c3e3ae9" class=""><mark class="highlight-red">N/A</mark></p><p id="57567aa2-3dbd-42bf-b0fd-e822c914265d" class=""><code>conda</code></p><p id="3ef9b8a0-2259-476c-826e-4f7a75f3fc36" class="">Remove Unused Packages: To remove packages that are no longer needed, you can use the conda clean command with the --yes or -y option:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fd8cb173-d06a-4c02-97ff-d0683de87eb0" class="code"><code class="language-Plain Text">conda clean --yes --all</code></pre><p id="28777364-24c4-4b33-a761-ed6411dbbd28" class=""><mark class="highlight-teal_background">List of Virtual Environments:</mark></p><p id="cf9ac65b-b472-476a-93f9-0f322318bae1" class=""><code>venv</code></p><p id="ad328a03-ebc9-44d2-b33a-de238bed067b" class="">It’s not possible to get the list of virtual environments created with venv because they are created as folders in the path where the command was run. On the other hand, conda created the environment folders in the anaconda3\envs path.  </p><p id="3f00255b-4e56-45ad-b3d0-f2cd53fdc8a7" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="985ad03e-93b7-4619-9ba5-c11f4a3c069a" class="code"><code class="language-Plain Text">conda env list
+
+base                          C:\Users\dpedr\anaconda3
+name_of_the_environment    *  C:\Users\dpedr\anaconda3\envs\lecture_1</code></pre><p id="8b91d691-fa22-4fa8-ab0a-5318d1a8a615" class=""><mark class="highlight-teal_background">List of Packages Installed in a Virtual Environment:</mark></p><p id="8d08e1bf-d845-42ca-9ed0-53975e818f6e" class=""><code>venv</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b5d8e18f-12eb-4873-b009-d9465319d721" class="code"><code class="language-Python">pip freeze  # pip list works too
+
+numpy==1.23.5
+pandas==1.5.2
+python-dateutil==2.8.2
+...</code></pre><p id="879531e6-b89f-45c1-b550-6d2e5dba5c6f" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="475e40d1-17dc-44e7-a68b-899db05dc2ef" class="code"><code class="language-Plain Text">conda list     # When virtual environment is activated
+conda list -n name_of_the_environment       # When virtual environment is NOT activated
+
+# packages in environment at C:\Users\dpedr\anaconda3\envs\lecture_1:
+#
+# Name                    Version                   Build  Channel
+bzip2                     1.0.8                he774522_0
+ca-certificates           2022.10.11           haa95532_0
+certifi                   2022.9.24       py310haa95532_0
+libffi                    3.4.2                hd77b12b_6
+...</code></pre><p id="82153cb0-64fd-4cc8-8b7f-e8fcc04b020f" class=""><mark class="highlight-teal_background">Requirements File .txt:</mark></p><p id="db4286c5-486b-409b-aade-2df37809fc29" class="">The requirements file is created to keep track of all the libraries installed on a given environment for a project</p><p id="9fd13f79-8e38-4d3e-a109-7761c02288ab" class="">Example <mark class="highlight-orange">requirements.txt </mark>file:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c96cb559-c186-4d9b-a151-45e86505dc57" class="code"><code class="language-Python">flask==1.0.0 # Specify the version
+requests&gt;=1.1.2,&lt;2.0 # Specify the version
+gunicorn
+numpy</code></pre><p id="a352f057-fa4a-45eb-8ea0-9af615ccbe6f" class="">Upgrade package when it is already installed:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7eb0d7fb-5e1d-4083-b404-7bf4794f6a10" class="code"><code class="language-Python">pip install pandas -U</code></pre><p id="051b7462-d011-4c94-9607-77ed4386f0ee" class="">Use the following code to automatically install all the libraries from a requirements.txt file to a given environment:</p><p id="3d4cadcc-19af-44f7-a009-9125fcde4f94" class=""><code>venv</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8a9282e5-607d-41d9-b8fa-06985d2ee1d6" class="code"><code class="language-Python">pip install -r requirements.txt</code></pre><p id="698ce2ab-da49-4ad8-bb71-a0c622d4775d" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="166ac8c5-9aa3-4c57-999e-3a4f84693f7f" class="code"><code class="language-Python">conda install --file requirements.txt
+conda install -c conda-forge --file requirements.txt</code></pre><figure id="4a1f328c-a868-4e0a-8e98-3fc6659d7bce"><a href="https://conda-forge.org/docs/user/introduction.html#why-conda-forge" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">A brief introduction - conda-forge 2022.12.21 documentation</div><div class="bookmark-description">The conda team, from Anaconda, Inc., packages a multitude of packages and provides them to all users free of charge in their channel. But what if a package you are looking for is not in the default channel? In the past users only had the option to create an Anaconda Cloud account and create their own channel.</div></div><div class="bookmark-href"><img src="https://conda-forge.org/docs/_static/favicon.ico" class="icon bookmark-icon"/>https://conda-forge.org/docs/user/introduction.html#why-conda-forge</div></div><img src="https://conda-forge.org/docs/_static/logo_black_on_trans.png" class="bookmark-image"/></a></figure><p id="cffc97cb-750d-419f-9124-e19110578727" class=""><mark class="highlight-teal_background">Requirements File .yml:</mark></p><p id="9d2ea29e-5ed2-4716-8c56-fbbd0821a164" class=""><code>venv</code></p><p id="269cec7f-4070-4b28-8ddb-97f5a143b5c0" class=""><mark class="highlight-red">THERE IS NOT A STRAIGHTFORWARD WAY FOR THIS</mark></p><p id="51192817-2fd3-4230-b961-5e555e28e8f7" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b3f00784-71cc-420d-9919-9ab74a079ae9" class="code"><code class="language-Python"># If environmet isn&#x27;t active
+conda env update --name name_of_the_environment -f requirements.yml
+
+# If environment is active
+conda env update -f requirements.yml</code></pre><p id="bf1dd3cb-ae7f-4c0c-9b61-dfeb2d645fa9" class=""><mark class="highlight-teal_background">Export an Environment to .yml:</mark></p><p id="ad082e40-8b2f-4294-9040-02c11f85b18e" class=""><code>venv</code></p><p id="0bb28572-00c9-49fa-b28e-35199fbb5412" class=""><mark class="highlight-red">N/A</mark></p><p id="96f4554d-a03d-44fd-9454-c46bdb5256a4" class=""><code>conda</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c118a2cb-f837-42d9-b23c-fdaf3c129f7c" class="code"><code class="language-Python"># If environmet isn&#x27;t active
+conda activate name_of_the_environment
+
+conda env export &gt; name_of_the_environment.yml</code></pre><p id="3cbaac9a-8f0a-40a7-b9f8-69b760496c2b" class=""><mark class="highlight-teal_background">Virtual Environment in Jupyter:</mark></p><p id="7682a802-13ca-4d36-99be-560d538c3327" class=""><code>venv</code></p><p id="8a7224d3-fe75-464c-b82a-6bdbb17f1d2d" class=""><strong>CREATE KERNEL:</strong></p><ol type="1" id="047a2b37-0664-4abd-aa8f-fc587153de7b" class="numbered-list" start="1"><li>Create a virtual environment with venv and activate it.</li></ol><ol type="1" id="991585f7-b0a8-47e8-a8c1-8b688deee04c" class="numbered-list" start="2"><li>Make sure that <mark class="highlight-red"><strong>ipykernel</strong></mark> library is installed in the virtual environment (<strong>pip install ipykernel</strong>).</li></ol><ol type="1" id="cb09a3bb-b994-4114-8ee8-5e23706f539b" class="numbered-list" start="3"><li>Create Kernel in Jupyter (this creates an exclusive kernel for the activated virtual environment):</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a0192542-ddf9-4b65-a681-88380b71d0d3" class="code"><code class="language-Python">python -m ipykernel install --name=&lt;name_of_kernel_for_virtual_environment&gt;</code></pre><ol type="1" id="b6661e3e-2c61-46de-bc35-06e4221be079" class="numbered-list" start="3"><li>Deactivate the virtual environment and launch Jupyter from terminal.</li></ol><p id="33051133-b186-47da-8eb2-949784378e70" class=""><strong>REMOVE KERNEL:</strong></p><ol type="1" id="dcb7d185-ba64-4dbd-9df7-916d00c65d37" class="numbered-list" start="1"><li>List Active Kernels:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5f64a631-2b9b-4d2c-baef-5191f4d2f10e" class="code"><code class="language-Python">jupyter kernelspec list</code></pre><ol type="1" id="10d3b327-fe7d-45ef-aaae-40bea2accd2e" class="numbered-list" start="2"><li>Remove the desired kernel from Jupyter:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6a7ef60f-ada6-4a3a-a292-b5d1a1addb7b" class="code"><code class="language-Python">jupyter kernelspec uninstall &lt;name_of_kernel_for_virtual_environment&gt;</code></pre><p id="0a345118-89ee-4c00-b6cb-fb6ae77454fd" class=""><code>conda</code></p><p id="c2335837-58b6-4bb4-b86f-53b668339022" class=""><strong>CREATE KERNEL:</strong></p><ol type="1" id="efa44192-6163-42f2-897d-1792c2ac791f" class="numbered-list" start="1"><li>Create a virtual environment with conda and activate it.</li></ol><ol type="1" id="6d21edd6-a27f-4922-9ab0-42f16ab75eb7" class="numbered-list" start="2"><li>Make sure that <mark class="highlight-red"><strong>ipykernel</strong></mark> library is installed in the virtual environment <mark class="highlight-red">(conda install -c anaconda ipykernel)</mark></li></ol><ol type="1" id="45ff8f26-4d5b-4a88-8688-77a548988a22" class="numbered-list" start="3"><li>Create the Kernel in Jupyter:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a0172225-3fd6-4747-9a67-17160d95be44" class="code"><code class="language-Python">ipython kernel install --name=&lt;name_of_kernel_for_virtual_environment&gt;</code></pre><ol type="1" id="e75685ca-7913-44e2-80a2-7cebd4aa02d3" class="numbered-list" start="3"><li>Launch Jupyter from terminal.</li></ol><p id="0cf16340-10be-4a35-aae2-30614f4bed11" class=""><strong>REMOVE KERNEL:</strong></p><ol type="1" id="35fb6b47-95c0-4f2b-bb60-47f74184c5cf" class="numbered-list" start="1"><li>List Active Kernels:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8e5613ed-f282-43a3-ac8a-42f80a507020" class="code"><code class="language-Python">jupyter kernelspec list</code></pre><ol type="1" id="235ba2a5-2ae0-4832-a2b3-647c1e09cf27" class="numbered-list" start="2"><li>Remove the desired kernel from Jupyter:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ba98a153-5229-41f5-ad66-bb0b0183e16d" class="code"><code class="language-Python">jupyter kernelspec uninstall &lt;name_of_kernel_for_virtual_environment&gt;</code></pre></details></li></ul><ul id="56a0833d-5a1e-4256-8ee3-f14485aa0135" class="toggle"><li><details details=""><summary>Python<strong><strong> </strong></strong>Threading</summary><p id="60b9b058-f8c9-4ddc-8cbe-243e856c107d" class=""><mark class="highlight-orange_background">CPU Bound vs I/O Bound:</mark> </p><p id="f3d56ea6-d15d-4e3c-9d1c-494757a93e62" class="">The terms &quot;CPU bound&quot; and &quot;I/O bound&quot; <span style="border-bottom:0.05em solid">describe the limiting factors of a process or a program</span> based on its resource usage and interaction patterns:</p><ol type="1" id="1c8d1e29-831e-40f0-9eac-3c7d6516c0b7" class="numbered-list" start="1"><li>CPU Bound: it is a process that is limited by the CPU speed as it spends most of its time performing computational tasks. <mark class="highlight-red">Multiprocessing would help.</mark></li></ol><ol type="1" id="4d0f43ac-ba5d-4a53-b349-a047c1f784ba" class="numbered-list" start="2"><li>I/O Bound: it is a process that is limited by I/O (Input/Output) operations. This means the process spends more time waiting for I/O operations to complete than to execute its own computation. <mark class="highlight-red">Threading would help.</mark></li></ol><p id="7744256d-2bbd-4e32-981d-75639b1db587" class="">
+</p><p id="dcb84836-6650-4975-b0d4-d3ae5eadfa4e" class="">A thread is a separate flow of execution. By using multiple threads we can speed up applications which face an input/output based bottleneck, a good example of this would be a web crawler.</p><p id="9f5f6cd6-cab3-4aef-9b34-8e27a223fced" class=""><mark class="highlight-red">Note: the threads are not run independently at the same time (this is not parallel computing). However, with threads you don’t have to wait for one function to finish to run another. (While threads may appear to run simultaneously, only one thread can be executed at a time. This is enforced by Python’s </mark><mark class="highlight-red"><a href="https://docs.python.org/3/glossary.html#term-global-interpreter-lock">global interpreter lock</a></mark><mark class="highlight-red">).</mark></p><p id="debec4d9-d11b-43c5-acf7-5c5bfad6a86d" class="">
+</p><ul id="6f70a606-b1c7-48a4-8a42-585818138ee3" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">Program without threading</mark></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="43dc80fc-f20d-4579-a271-99cebd1f0f33" class="code"><code class="language-Python">import time
+
+def loop_1(num_1):
+    for i in range(num_1):
+        print(&quot;First Loop: {}&quot;.format(i))
+        time.sleep(1)
+
+def loop_2(num_1, num_2):
+    for j in range(num_1,num_2):
+        print(&quot;Second Loop: {}&quot;.format(j))
+				time.sleep(1)
+
+loop_1(10)
+loop_2(10,20)</code></pre><p id="613bd6c2-7c57-4b10-bd4b-bea1cf14cc4d" class="">Output:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="85f5caf6-d1cd-4d81-a912-b6a2bd77d160" class="code"><code class="language-Python">First Loop: 0
+First Loop: 1
+First Loop: 2
+First Loop: 3
+First Loop: 4
+First Loop: 5
+First Loop: 6
+First Loop: 7
+First Loop: 8
+First Loop: 9
+Second Loop: 10
+Second Loop: 11
+Second Loop: 12
+Second Loop: 13
+Second Loop: 14
+Second Loop: 15
+Second Loop: 16
+Second Loop: 17
+Second Loop: 18
+Second Loop: 19</code></pre></details></li></ul><ul id="ef93f0c1-01a5-4743-b088-46905f82c8b0" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">Program with threading (Single Thread Example)</mark></summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bc9bf978-55ea-4055-9c7f-f6537d989e86" class="code"><code class="language-Python">import threading
+import time
+
+def loop_1(num_1):
+    for i in range(num_1):
+        print(&quot;First Loop: {}&quot;.format(i))
+        time.sleep(1)
+
+thread_2 = threading.Thread(target=loop_1, args=(10,))
+thread_2.start()
+
+def loop_2(num_1, num_2):
+    for j in range(num_1, num_2):
+        print(&quot;Second Loop: {}&quot;.format(j))
+        time.sleep(1)
+
+loop_2(10,20)</code></pre><p id="87bbbf57-92e1-4bcc-a5bd-39962fb1ff4e" class="">Outcome:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="28d1ff53-0d97-427e-9da3-eee7d294b10c" class="code"><code class="language-Python">First Loop: 0
+Second Loop: 10
+Second Loop: 11
+First Loop: 1
+First Loop: 2
+Second Loop: 12
+First Loop: 3
+Second Loop: 13
+First Loop: 4
+Second Loop: 14
+Second Loop: 15
+First Loop: 5
+First Loop: 6
+Second Loop: 16
+First Loop: 7
+Second Loop: 17
+First Loop: 8
+Second Loop: 18
+First Loop: 9
+Second Loop: 19</code></pre></details></li></ul><ul id="05764b9b-067e-46c8-b3e8-523027d934e3" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">Program with daemon thread activated</mark></summary><p id="86f6f706-f5cd-47cb-a240-25d32854ebc2" class="">The daemon thread is a background thread that ends when the main thread stops.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="dbdda1b2-c130-41c6-be1a-a7033813675a" class="code"><code class="language-Python">import threading
+import time
+
+def secondary_function(num_1):
+    for i in range(num_1):
+        print(&quot;Secondary Loop: {}&quot;.format(i))
+        time.sleep(1)
+
+thread_2 = threading.Thread(target=secondary_function, args=(10,))
+thread_2.daemon = True
+thread_2.start()
+
+def main_function(num_1):
+    for j in range(num_1):
+        print(&quot;Main Loop: {}&quot;.format(j))
+        time.sleep(1)
+
+main_function(5)</code></pre><p id="b541d468-f607-4e39-ba4f-4f24ad15afc6" class="">Output:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b5f18a73-0678-4bd6-b403-c18e2fc937d6" class="code"><code class="language-Python">Secondary Loop: 0
+Main Loop: 0
+Secondary Loop: 1
+Main Loop: 1
+Main Loop: 2
+Secondary Loop: 2
+Secondary Loop: 3
+Main Loop: 3
+Main Loop: 4
+Secondary Loop: 4
+Secondary Loop: 5</code></pre></details></li></ul><ul id="e5454795-a5e4-4fcb-8804-ee0edf9f8385" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">join() a thread</mark></summary><p id="9136de7c-972b-45c9-8133-2a48378a4d8f" class="">Ensuring that the main program or other threads pause until the thread that called join() terminated.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a03ad94e-a3fb-45cc-a3fa-af510997092f" class="code"><code class="language-JavaScript">import threading
+import time
+
+def loop_1(num_1):
+    for i in range(num_1):
+        print(&quot;First Loop: {}&quot;.format(i))
+        time.sleep(1)
+
+thread_2 = threading.Thread(target=loop_1, args=(10,))
+thread_2.start()
+thread_2.join()
+
+def loop_2(num_1, num_2):
+    for j in range(num_1, num_2):
+        print(&quot;Second Loop: {}&quot;.format(j))
+        time.sleep(1)
+
+loop_2(10,20)</code></pre><p id="6988d19f-1752-49b2-bcf4-ea77408d2f9c" class="">Output:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9fd8365f-b19f-4017-a21b-e443b1632507" class="code"><code class="language-JavaScript">First Loop: 0
+First Loop: 1
+First Loop: 2
+First Loop: 3
+First Loop: 4
+First Loop: 5
+First Loop: 6
+First Loop: 7
+First Loop: 8
+First Loop: 9
+Second Loop: 10
+Second Loop: 11
+Second Loop: 12
+Second Loop: 13
+Second Loop: 14
+Second Loop: 15
+Second Loop: 16
+Second Loop: 17
+Second Loop: 18
+Second Loop: 19</code></pre></details></li></ul><ul id="a80133da-8818-4701-b922-a211474b8951" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">Multiple threads</mark></summary><p id="0440ab10-ebe4-4b5d-af2b-ca13f44e6d23" class=""><strong>Manually:</strong></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1e018044-4396-47e0-8c0c-e17bb20f335a" class="code"><code class="language-Python">import threading
+import time
+
+def loop_1(num_iterations):
+    for j in range(num_iterations):
+        print(f&quot;Main Thread: {j}&quot;)
+        time.sleep(1)
+
+def loop_2(thread_number, num_iterations):
+    for i in range(num_iterations):
+        print(f&quot;{thread_number} Thread: {i}&quot;)
+        time.sleep(1)
+
+# Number of iterations for loop_2
+num_iterations = 5
+
+# Create threads for loop_2 function
+threads = []
+for thread_number in range(2):
+    t = threading.Thread(target=loop_2, args=(thread_number, num_iterations))
+    t.start()  # Start the thread
+    threads.append(t)
+
+# Wait for all threads to complete
+for t in threads:
+    t.join()
+
+# Execute loop_1 after the threaded tasks
+loop_1(num_iterations=10)</code></pre><p id="6b7acf3d-39c6-4053-bf25-7117e998470c" class="">Output:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="142b96ce-6e36-48d7-9f0d-ae65dad9bea7" class="code"><code class="language-JavaScript">0 Thread: 0
+1 Thread: 0
+0 Thread: 1
+1 Thread: 1
+0 Thread: 2
+1 Thread: 2
+0 Thread: 3
+1 Thread: 3
+0 Thread: 4
+1 Thread: 4
+Main Thread: 0
+Main Thread: 1
+Main Thread: 2
+Main Thread: 3
+Main Thread: 4
+Main Thread: 5
+Main Thread: 6
+Main Thread: 7
+Main Thread: 8
+Main Thread: 9</code></pre><p id="633a18a5-12d5-409b-9c36-a5df5c143552" class=""><strong>Using ThreadPoolExecutor:</strong></p><p id="2f2316ed-1943-4a5b-b72d-13a1beb88f90" class="">Easier way to start up a group of threads using <code>concurrent.futures</code> library.</p><p id="9945d092-2a9f-45d6-a311-467e89b63ec7" class="">In the following example, the ThreadPoolExecutor runs 2 threads at a time by joining them and then continues with following threads. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6fde33b5-017f-4071-9371-563f53644c27" class="code"><code class="language-Python">import concurrent.futures
+import threading
+import time
+
+def loop_1(num_iterations):
+    for j in range(num_iterations):
+        print(f&quot;Main Thread: {j}&quot;)
+        time.sleep(1)
+
+def loop_2(thread_number, num_iterations):
+    for i in range(num_iterations):
+        print(f&quot;{thread_number} Thread: {i}&quot;)
+        time.sleep(1)
+
+# Number of iterations for loop_2
+num_iterations = 5
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=2) as executor:
+    # Submit two tasks to the executor with different thread_numbers but the same num_1
+    futures = [executor.submit(loop_2, thread_number, num_iterations) for thread_number in range(2)]
+
+    # Wait for all futures to complete
+    for future in concurrent.futures.as_completed(futures):
+        future.result()  # You can handle results or exceptions here
+
+# Execute loop_1 after the threaded tasks
+loop_1(num_iterations=10)</code></pre><p id="eff5bfa0-eb7e-423c-a53a-570f92bf12b5" class="">Outcome:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e71c9e70-9da9-41f0-87e9-31a283ea9642" class="code"><code class="language-JavaScript">0 Thread: 0
+1 Thread: 0
+1 Thread: 1
+0 Thread: 1
+1 Thread: 2
+0 Thread: 2
+1 Thread: 3
+0 Thread: 3
+1 Thread: 4
+0 Thread: 4
+Main Thread: 0
+Main Thread: 1
+Main Thread: 2
+Main Thread: 3
+Main Thread: 4
+Main Thread: 5
+Main Thread: 6
+Main Thread: 7
+Main Thread: 8
+Main Thread: 9</code></pre><p id="55699b7e-5649-45b6-8329-fdfa46f898a2" class="">
+</p><p id="885bf671-bd44-42cb-b58d-535dd9e85a08" class="">
+</p></details></li></ul><ul id="521c566b-49fc-44f6-851a-4a85d7515bb5" class="toggle"><li><details details=""><summary><mark class="highlight-teal_background">Thread Locking (Race Condition and Deadlock)</mark></summary><p id="3c9b43ea-1c1a-4f3e-ad89-e402bd36dfd3" class="">Race Condition: when there are multiple threads trying to modify the same resource. </p><p id="507e1b76-311c-4f85-b603-30064699e69d" class="">Deadlock: if locks aren’t used properly for race conditions, we can create a deadlock where multiple threads are waiting on the same resource and we get stuck.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="653a57ef-c9a9-44f2-b983-db3a939146e4" class="code"><code class="language-Python"></code></pre><p id="39d57864-f832-4b72-8f0e-30c4e05c4727" class="">
+</p><p id="34189090-3519-4b9a-ac9a-93cc454453ee" class="">
+</p></details></li></ul><p id="03674fe3-4edf-427f-965b-ec39755eff95" class=""><mark class="highlight-teal_background">Program with multithreading using the events object from the threading library:</mark> </p><p id="14c11456-53da-4cbf-a7aa-b4b9a7963814" class="">Code:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c4f6523f-ae7c-4063-87ff-f08641b074b3" class="code"><code class="language-Python">import threading
+import time
+
+def secondary_function(num_1):
+    for i in range(num_1):
+        if event.is_set():
+            break
+        else:
+            print(&quot;Secondary Loop: {}&quot;.format(i))
+            time.sleep(1)
+
+event = threading.Event()
+thread_2 = threading.Thread(target=secondary_function, args=(10,))
+thread_2.start()
+
+def main_function(num_1):
+    for j in range(num_1):
+        print(&quot;Main Loop: {}&quot;.format(j))
+        time.sleep(1)
+
+main_function(5)
+event.set()</code></pre></details></li></ul><ul id="2722994e-c0ef-4a60-88f6-2d4238ba5775" class="toggle"><li><details details=""><summary>Lambda</summary><p id="817a787c-f3a0-48a2-8253-8ddb94630a93" class="">Lambdas are used to create simple functions in an efficient way.</p><p id="b2b7e31d-4f0e-4d2b-8f04-287909470800" class=""><mark class="highlight-red">Note: a lambda function can take any number of parameters, but can only have one expression. They are called anonymous functions in other languages because we don’t give them names. </mark></p><p id="f888977c-e4f5-4d9c-83e6-e65794de29d5" class=""><mark class="highlight-teal_background"> Lambda Syntax:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c8a53d3f-ccde-42c9-9580-c43954168d3e" class="code"><code class="language-Python">Function_Name (Result) = lambda parameters : expression</code></pre><p id="962aba23-433a-486e-9232-53911aa15bd9" class=""><mark class="highlight-teal_background">Example:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a398529c-a572-425d-8c28-33ab0dd959b2" class="code"><code class="language-Python">x = lambda a: a + 10  # Same as: (lambda a: a + 10)(5)
+print(x(5))
+
+# Result is 15
+
+y = lambda a,b: a * b  # Same as: (lambda a,b: a * b)(3,4)
+print(y(3,4))
+
+# Result is 12</code></pre><p id="573bb9b9-55dd-443d-b789-b0722878e9c7" class=""><mark class="highlight-teal_background">Lambda (list + map):</mark></p><p id="b80fc748-d3d1-48ce-a7e5-1f52a4a657fe" class="">The <code>map()</code> function runs a lambda function over a list. To work with map(), the lambda should have one parameter representing one element from the source list. Choose a suitable name for the parameter, like <code>n</code> for a list of numbers, <code>s</code> for a list of strings. The result of map() is an <mark class="highlight-red">&quot;iterable&quot; map object</mark> which mostly works like a list, but it does not print. Therefore, the examples wrap the map() result in list() to print:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6e2946df-acce-4e98-bbbb-bef95c09d4f6" class="code"><code class="language-Python">&gt;&gt;&gt; map(lambda n: n * 2, [1, 2, 3, 4, 5])
+&lt;map object at 0x10ce142e8&gt;
+
+&gt;&gt;&gt; list(map(lambda n: n * 2, [1, 2, 3, 4, 5]))
+[2, 4, 6, 8, 10]
+
+&gt;&gt;&gt; list(map(lambda x,y: x+y, [4,5,6],[1,3,4])))
+[5, 8, 10]</code></pre><p id="4326d401-4c9f-4489-ad37-f56a52f3de09" class=""><mark class="highlight-teal_background">Lambda (list + filter):</mark></p><p id="f385933f-958b-4f33-93be-0b5055fabdaa" class="">The <code>filter()</code> function takes a function and a list, and returns a subset of the elements where the function returns true:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bfafd7de-d77e-4a3e-8583-0b440cfc231e" class="code"><code class="language-Python">strs = [&#x27;apple&#x27;, &#x27;and&#x27;, &#x27;a&#x27;, &#x27;donut&#x27;]
+filter(lambda s: len(s) &gt; 3, strs)
+
+	Terminal:
+	&lt;filter object at 0x000002053B0B6DD0&gt;
+
+list(filter(lambda s: len(s) &gt; 3, strs))
+
+	Terminal:
+	[&#x27;apple&#x27;, &#x27;donut&#x27;]</code></pre><p id="54de4911-99e0-4e03-a70d-b9a35b7866b2" class=""><mark class="highlight-teal_background">Lambda (sum + map) and (sum + filter):</mark></p><p id="ee1d3f47-fae3-422d-bad8-852e27e5aedb" class="">The <code>sum()</code> function sums the results of the lambda map() and filter() results:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="76d9f6ae-a893-4ff2-a242-6ac8a477d1ff" class="code"><code class="language-Python">sum(map(lambda n: n * 2, [1, 2, 3, 4, 5]))
+30
+sum(filter(lambda n: n &gt; 2, [1, 2, 3, 4, 5]))
+12</code></pre><p id="1f53a0f9-3215-4baf-801f-a7ff897a35a5" class=""><mark class="highlight-teal_background">Lambda (pd.DataFrame + assign):</mark></p><p id="8a35affd-7e8f-47b3-a8d7-f9a898de6bf7" class="">Return a new DataFrame with the new columns added to the existing ones.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2af0b170-ca6e-4cb7-8b38-51b3184b4cc7" class="code"><code class="language-Python">&gt;&gt;&gt; df = pd.DataFrame({&#x27;temp_c&#x27;: [17.0, 25.0]},index=[&#x27;Portland&#x27;, &#x27;Berkeley&#x27;])
+&gt;&gt;&gt; df
+
+          temp_c
+Portland    17.0
+Berkeley    25.0
+
+&gt;&gt;&gt; df.assign(temp_f=lambda x: x.temp_c * 9 / 5 + 32)
+
+          temp_c  temp_f
+Portland    17.0    62.6
+Berkeley    25.0    77.0
+
+# Syntax (Assuming df is an existing DataFrame):
+&gt;&gt;&gt; new_df = df.assign(NewColumn1=some_values, NewColumn2=other_values)</code></pre><p id="51e344d7-0a0a-4971-81ae-f3c788bbb373" class=""><mark class="highlight-teal_background">Lambda (pd.DataFrame + map):</mark></p><p id="fea2f82e-bae2-47a9-9034-62700e765c9b" class="">Apply a Lambda function to each element in a DataFrame.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="413d971c-3a42-4fb0-8da4-d6bb61e46b5b" class="code"><code class="language-Python">&gt;&gt;&gt; df = pd.DataFrame({&#x27;A&#x27;: [1, 2, 3], &#x27;B&#x27;: [4, 5, 6]})
+&gt;&gt;&gt; df
+
+  A	B
+0	1	4
+1	2	5
+2	3	6
+
+&gt;&gt;&gt; df.map(lambda x: x*2)
+
+  A	B
+0	2	8
+1	4	10
+2	6	12</code></pre><p id="1902e042-56bb-4373-9336-31eeb92463a7" class=""><mark class="highlight-teal_background">Lambda (pd.DataFrame + apply):</mark></p></details></li></ul><ul id="bd39da33-a95a-4fb4-9c8b-cbf86016c899" class="toggle"><li><details details=""><summary>Signature of a Method</summary><p id="2820da53-c199-4db1-ac70-447e1f235eee" class=""><mark class="highlight-orange_background">Signature:</mark></p><p id="b78b787d-7de2-4c29-a341-7a25cd01b562" class="">Signature refers to a method definition, including its name along with the number and types of its parameters. Signature is crucial because it <strong>determines how a method is identified and distinguished from others </strong>in the same class (overloading) or in a subclass (overriding).</p><p id="c1462812-e71c-4627-807d-a4f7be042bf2" class=""><strong>Method signature in Python:</strong></p><ol type="1" id="a5db2f92-be6a-47d8-8fb4-0c78ce5389ba" class="numbered-list" start="1"><li><strong>Method Name:</strong> The identifier that is used to call the method.</li></ol><ol type="1" id="864defd2-23c6-4537-bc96-7b173ff7062c" class="numbered-list" start="2"><li><strong>Parameters:</strong><ul id="11ea6a79-421e-4eb3-9ca6-1ce51c280ee2" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Number of parameters:</span> How many arguments the method accepts.</li></ul><ul id="6030cd35-f993-4b4d-b11f-15ce0acde27b" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Types of parameters:</span> While Python is dynamically typed and does not enforce type annotations, you can optionally specify expected data types using Python&#x27;s type hints.</li></ul><ul id="e24079dd-7d04-4bae-ada1-da4f0de24ee7" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">Parameter names:</span> The variable names that will receive the method&#x27;s arguments within its body.</li></ul></li></ol><p id="17e26792-66a8-4688-8b8a-2a824c733cc2" class=""><mark class="highlight-yellow_background"><strong>Parameters:</strong></mark></p><p id="2b6772d6-866f-492c-935f-b0a63d931e25" class="">In Python function definitions, positional parameters should be defined before keyword parameters. This rule is necessary because positional arguments are matched based on their order, whereas keyword (or named) parameters are matched by their name.</p><p id="c03e8e48-ad33-446f-aa78-9571b875d38d" class="">Correct order when defining a function:</p><ol type="1" id="3aacc3ac-efc2-4050-810e-5839c3c80e7d" class="numbered-list" start="1"><li>Standard <strong>positional </strong>parameters (pos1 and pos2).</li></ol><ol type="1" id="a4195ac2-9949-46af-aabd-5934e417870b" class="numbered-list" start="2"><li>Default <strong>positional </strong>parameters (pos3).</li></ol><ol type="1" id="f18f3f48-837e-4035-a50c-18d3cd3956d3" class="numbered-list" start="3"><li><code><strong>*args</strong></code> to capture additional <strong>positional </strong>parameters.</li></ol><ol type="1" id="5cb5c2a1-a80c-4ae1-8f04-559a946781e5" class="numbered-list" start="4"><li><strong>Keyword</strong> (named) parameters (kw1).</li></ol><ol type="1" id="dba88732-eddf-483f-83f4-544d3156e2b6" class="numbered-list" start="5"><li>Default <strong>keyword </strong>parameters (kw2).</li></ol><ol type="1" id="d58542f9-d422-44e4-9187-0d8d41c9d357" class="numbered-list" start="6"><li><code><strong>**kwargs</strong></code> to capture additional <strong>keyword</strong> parameters.</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e49a6267-72f1-47e1-80cf-3bb55873b7dc" class="code"><code class="language-Python">def example_func(pos1, pos2, pos3=&#x27;default&#x27;, *args, 
+						     kw1, kw2=&#x27;kw_default&#x27;, **kwargs):
+    print(f&quot;pos1 = {pos1}&quot;)
+    print(f&quot;pos2 = {pos2}&quot;)
+    print(f&quot;pos3 = {pos3}&quot;)
+    print(f&quot;args = {args}&quot;)
+    print(f&quot;kw1 = {kw1}&quot;)
+    print(f&quot;kw2 = {kw2}&quot;)
+    print(f&quot;kwargs = {kwargs}&quot;)</code></pre><p id="2e5197ec-5de0-45b5-9337-5d48e31ddbd0" class=""><mark class="highlight-yellow_background">Using *args:</mark></p><p id="829b382f-a1a6-403c-a04b-8df6cdc3e8e8" class="">It allows a function to accept any number of <strong>positional </strong>arguments beyond those explicitly defined. It collects them into a <strong>tuple</strong>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="92ec0313-b9bc-4e18-8ef0-067f4cb00f34" class="code"><code class="language-Python">def function_with_args(*args):
+    for arg in args:
+        print(arg)
+
+function_with_args(&#x27;Hello&#x27;, &#x27;world&#x27;, &#x27;from&#x27;, &#x27;Python&#x27;)</code></pre><p id="03dea2d4-7453-4eb9-a7f5-d485b648ca2f" class=""><mark class="highlight-yellow_background">Using **kargs:</mark></p><p id="3ba19452-d0b7-4f1e-8712-c93b355fac2c" class="">It allows a function to accept any number of <strong>keyword </strong>arguments beyond those explicitly defined. It collects them into a <strong>dictionary</strong>.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="461f322d-023f-4c65-bb2b-95486c21e7d5" class="code"><code class="language-Python">def function_with_kwargs(**kwargs):
+    for key, value in kwargs.items():
+        print(f&quot;{key}: {value}&quot;)
+
+function_with_kwargs(first=&#x27;Hello&#x27;, second=&#x27;world&#x27;, third=&#x27;from&#x27;, fourth=&#x27;Python&#x27;)</code></pre></details></li></ul><ul id="8f270d41-df8e-4039-b1f7-fa4ad1288d5d" class="toggle"><li><details details=""><summary>Overriding and Overloading</summary><p id="330eaa57-5cf7-47f4-a455-ff761534ee78" class=""><mark class="highlight-orange_background">Overriding:</mark></p><p id="4f91a0ef-79a7-4664-b477-ea50ed28e696" class="">Overriding refers to the ability of a subclass to provide a specific implementation of a method that is already defined in its superclass. The overridden method in the subclass should have the same signature as in the parent class.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f2874dd2-8af0-4c2d-89f2-96567de86a8a" class="code"><code class="language-Python">class Animal:
+    def speak(self):
+        return &quot;Some sound&quot;
+
+class Dog(Animal):
+    def speak(self):
+        return &quot;Woof&quot;
+
+class Cat(Animal):
+    def speak(self):
+        return &quot;Meow&quot;
+
+dog = Dog()
+print(dog.speak())  # Outputs: Woof
+
+cat = Cat()
+print(cat.speak())  # Outputs: Meow
+</code></pre><p id="4f328d67-e459-447a-bb1f-fd17719ac903" class="">Note: if the signature are different, you can&#x27;t interchangeably use objects of the subclasses (Dog and Cat) without considering their method signatures.</p><p id="4da1e1b5-82d6-42dd-9c6e-9ac4a2abf598" class=""><mark class="highlight-orange_background">Overloading:</mark></p><p id="c822280a-676c-42c3-91d0-73b0e92180c6" class="">Overloading in many object-oriented programming languages typically refers to the ability to have multiple methods in the same scope with the same name but different signatures (i.e., different numbers or types of parameters). However, Python does not support this traditional form of method overloading. Instead, Python has its own unique approach to achieve similar functionality:</p><ol type="1" id="a7332abe-dcba-4a19-8550-aa7fbd104863" class="numbered-list" start="1"><li><strong>Default Parameter Values:</strong><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6223c107-ac85-49ad-835d-43b38774ca3b" class="code"><code class="language-Python">class MathOperation:
+    def add(self, a, b, c=0):
+        return a + b + c
+
+operation = MathOperation()
+print(operation.add(1, 2))    # Outputs 3 (using two arguments)
+print(operation.add(1, 2, 3)) # Outputs 6 (using three arguments)</code></pre></li></ol><ol type="1" id="60a07f2f-e9ec-45b5-9228-e8065b51f4cf" class="numbered-list" start="2"><li><strong>Variable-Length Arguments:</strong><p id="a4bf0b6f-df62-4c95-a12b-3f23219d847a" class="">This refers to using *args and **kargs</p></li></ol><ol type="1" id="e3608995-a9db-42a8-8a0e-b56295a95222" class="numbered-list" start="3"><li><strong>Operator Overloading:</strong><p id="9423dbe9-2b84-40b0-97a4-27e81f4be9b9" class="">Python allows you to overload certain operators so that they have customized behavior with respect to your objects.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8c23f144-1972-4ef0-b43e-33829808e325" class="code"><code class="language-Python">class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
+
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+p1 = Point(1, 2)
+p2 = Point(3, 4)
+result = p1 + p2
+print(result.x, result.y)  # Outputs: 4 6</code></pre></li></ol><p id="ef00249b-bb20-4d23-972a-a88e7852b0bf" class=""><mark class="highlight-orange_background">Polymorphism:</mark></p><p id="cf0c1775-ec44-4b03-a6eb-13b31e28c6a3" class="">Polymorphism is a fundamental concept in object-oriented programming (OOP) that allows objects of different classes to be treated as objects of a common superclass. It is a key principle that enables an object to take on many forms.</p><p id="7046b8f6-d618-47e3-b13a-031d76a979f1" class="">
+</p><p id="9c1c25a4-352e-4156-8f9a-010de542d901" class="">
+</p></details></li></ul><ul id="d31a463c-491c-4d75-8732-07fe385ff0b1" class="toggle"><li><details details=""><summary>Dunder (double underscoring) functions (magic methods or special methods)</summary><p id="577de5f6-d8d4-4c12-8d87-7a5b7f8726cc" class="">Dunders are typically inherited from the base class <code><strong>object</strong></code>. (The <code><strong>object</strong></code> class is the most base type in Python, and all classes implicitly inherit from it unless another class is explicitly specified). <span style="border-bottom:0.05em solid">They are special predefined methods that you can define in your own classes to enrich them with certain behaviors.</span></p><p id="0ec81889-3553-4a2e-b192-21cb6b0f21ae" class=""><mark class="highlight-orange_background">__init__:</mark></p><p id="398091e3-5044-4050-b5e1-712f4982c977" class="">This method is the constructor for a class, initializing new instances.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e70c3ea7-20f2-4332-a718-283a639cef5d" class="code"><code class="language-Python">class MyClass:
+    def __init__(self, value):
+        self.value = value
+
+# Using __init__
+obj = MyClass(10)
+obj.value  # Outputs: 10</code></pre><p id="b8a657b6-f9c8-41e4-ac58-c699d7f6d8b8" class=""><mark class="highlight-orange_background">__call__:</mark></p><p id="ba0fc285-e51b-4fc5-be2b-1cc4e6808f08" class="">Allows an instance to be called like a function.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f5c4cf90-5747-4e84-9152-ba151b9b3f32" class="code"><code class="language-Python">class MyClass:
+    def __call__(self, arg):
+        return f&quot;Called with {arg}&quot;
+
+# Using __call__
+obj = MyClass()
+obj(&#x27;argument&#x27;)  # Outputs: Called with argument</code></pre><p id="961b6d1a-c2ec-4cd6-8793-b317ee0c5398" class=""><mark class="highlight-orange_background">__getitem__:</mark></p><p id="2d48337e-3f6b-429e-bcd1-43108ee48568" class="">Allows an object&#x27;s instance to use the square brackets (<code><strong>[]</strong></code>) operator, enabling you to access elements as if the instance was a collection.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f161d50b-d357-42d4-b8eb-d6a1660d0c16" class="code"><code class="language-Python">class IndexableContainer:
+    def __init__(self, data):
+        self.data = data
+
+    def __getitem__(self, key):
+        return self.data[key]
+
+# Using __getitem__ with a list
+container = IndexableContainer([&#x27;zero&#x27;, &#x27;one&#x27;, &#x27;two&#x27;, &#x27;three&#x27;])
+print(container[0])  # Outputs: zero
+print(container[1])  # Outputs: one
+print(container[2:4])  # Outputs: [&#x27;two&#x27;, &#x27;three&#x27;]
+
+# Using __getitem__ with a dictionary
+container = IndexableContainer({&#x27;a&#x27;: &#x27;alpha&#x27;, &#x27;b&#x27;: &#x27;beta&#x27;, &#x27;c&#x27;: &#x27;gamma&#x27;})
+print(container[&#x27;a&#x27;])  # Outputs: alpha
+print(container[&#x27;b&#x27;])  # Outputs: beta</code></pre></details></li></ul><ul id="bfcecb71-d5ac-4a22-ba58-adc4dd9e6769" class="toggle"><li><details details=""><summary>Variables and Methods</summary><p id="1c8b1689-f3b7-4c14-beeb-572fce7d8f26" class=""><mark class="highlight-orange_background">Instance Variables:</mark></p><p id="e262872d-6dde-4d0f-bb98-63151cea7b87" class="">They are specific to each instance of a class; they represent the <span style="border-bottom:0.05em solid">state or properties of a particular object</span>, meaning each object can have different values for these variables.</p><p id="e500398a-9165-478b-beea-fecddd7d42e9" class=""><mark class="highlight-orange_background">Class Variables:</mark></p><p id="9b85e8dc-8a64-4df8-8522-fcb05f24a70e" class="">Class variables, on the other hand, are <span style="border-bottom:0.05em solid">shared across all instances of a class.</span> They are defined within the class but outside of any methods (including __init__) and are not specific to any instance. Changing the value of a class variable affects all instances at the same time.</p><p id="22cd5254-353a-4025-ba84-de48db381d1c" class=""><mark class="highlight-orange_background">Regular Methods:</mark></p><p id="30f3e6fb-fdb6-40f2-bac5-2400b0fdb36f" class="">Automatically take the <strong>instance </strong>as the first argument <strong>(self)</strong>.</p><p id="7cfe198c-8e82-4518-b402-9f9baa47d75d" class=""><mark class="highlight-orange_background">Class Methods @classmethod:</mark></p><p id="0eeeefcc-8d40-4046-8813-689b9ddd67d1" class="">Automatically take the <strong>class</strong> as the first argument <strong>(cls)</strong>. Use cases (Types):</p><ol type="1" id="ddac01dc-c814-4a41-9820-8b7280ab5a64" class="numbered-list" start="1"><li><span style="border-bottom:0.05em solid">Change a class variable</span> across all instances (a class method is bound to the class rather than its instances, so it modifies class variables that are shared across all instances).</li></ol><ol type="1" id="adf0da75-e3ed-4a1b-b7ce-9c262d0aceb1" class="numbered-list" start="2"><li>We can use them as <span style="border-bottom:0.05em solid">alternative constructors</span> (usually start with “from”).</li></ol><p id="e8c1cce6-4fd3-457e-9ba3-53068af64f0e" class=""><mark class="highlight-orange_background">Static Methods @staticmethod:</mark></p><p id="2e2c0e66-b44f-43da-970f-6067e20d83c3" class="">Static methods behave like plain/regular functions, except they are grouped within a class. The primary reason to use static methods is organizational: they are <span style="border-bottom:0.05em solid">logically associated with the class they are defined in</span>, but they do not interact with the class or instance properties.</p><p id="011f1efa-39fe-40f3-9460-0cd36ca539be" class="">
+</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f663f0f7-0e9b-4f1c-af11-05ba23e4acf6" class="code"><code class="language-Python">class Employee:
+
+    num_of_emps = 0  # CLASS VARIABLE
+    raise_amt = 1.04  # CLASS VARIABLE
+
+    def __init__(self, first, last, pay):  # CONSTRUCTOR
+        self.first = first  # INSTANCE VARIABLE
+        self.last = last  # INSTANCE VARIABLE
+        self.email = first + &#x27;.&#x27; + last + &#x27;@email.com&#x27;  # INSTANCE VARIABLE
+        self.pay = pay  # INSTANCE VARIABLE
+
+        Employee.num_of_emps += 1
+
+    def apply_raise(self):  # REGULAR METHOD
+        self.pay = int(self.pay * self.raise_amt)
+
+    @classmethod  # CLASS METHOD TYPE 1
+    def set_raise_amt(cls, amount):
+        cls.raise_amt = amount
+
+    @classmethod  # CLASS METHOD TYPE 2
+    def from_string(cls, emp_str):
+        first, last, pay = emp_str.split(&#x27;-&#x27;)
+        return cls(first, last, pay)
+
+    @staticmethod  # STATIC METHOD
+    def is_workday(day):
+        if day.weekday() == 5 or day.weekday() == 6:
+            return False
+        return True
+
+emp_1 = Employee(&#x27;Corey&#x27;, &#x27;Schafer&#x27;, 50000)
+str_emp_1 = Employee.from_string(&#x27;Corey-Schafer-50000&#x27;)  # CLASS METHOD TYPE 2
+
+Employee.set_raise_amt(1.05)  # CLASS METHOD TYPE 1</code></pre><p id="5097a258-0447-404c-b993-eb5c4ae280c1" class="">
+</p><p id="fc302fbb-3981-426b-b9e4-4160fd7f6a2f" class=""><mark class="highlight-orange_background">Underscored Variables and Methods (conventions):</mark></p><ol type="1" id="4ee8f8b9-0257-4991-a192-1f243535e728" class="numbered-list" start="1"><li>Single Leading Underscore<strong> </strong><code><strong>_variable</strong></code>: suggests that a variable or method should be treated as a private member of its containing class or module. It tells other programmers that this variable or method is intended for internal use and should not be accessed directly from outside the class or module.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7479ce8b-fc92-47b8-951c-16acc196036a" class="code"><code class="language-Python">class MyClass:
+    def __init__(self):
+        self._internal_variable = 42
+
+    def _internal_method(self):
+        pass</code></pre></li></ol><ol type="1" id="fb5fd950-7cad-497b-9683-7ba0e44f07b2" class="numbered-list" start="2"><li>Double Leading Underscore <code><strong>__variable</strong></code><strong>:</strong> it invokes <strong>name mangling </strong>in Python. The interpreter alters the variable or method name in a way that <span style="border-bottom:0.05em solid">makes it harder to access and modify them</span>. This feature is closer to what is considered &quot;private&quot; in many other programming languages.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="97db6af2-4a2a-41db-b52b-e3cf9d81ab0f" class="code"><code class="language-Python">class Parent:
+    def __init__(self):
+        self.__private_var = &#x27;I am private&#x27;
+
+    def __private_method(self):
+        return &#x27;This is a private method&#x27;
+
+class Child(Parent):
+    def __init__(self):
+        super().__init__()
+        self.__private_var = &#x27;Child overrides private var&#x27;
+
+    def __private_method(self):
+        return &#x27;Child’s private method&#x27;
+
+parent = Parent()
+child = Child()
+
+# These direct accesses will raise an AttributeError
+# print(parent.__private_var)  # ERROR
+# print(parent.__private_method())  # ERROR
+# print(child.__private_var)  # ERROR
+# print(child.__private_method())  # ERROR
+
+# Correct way to access the mangled name from outside
+print(parent._Parent__private_var)  # Outputs: I am private
+print(child._Parent__private_var)   # Outputs: I am private
+print(child._Child__private_var)    # Outputs: Child overrides private var
+
+# Accessing the private method
+print(parent._Parent__private_method())  # Outputs: This is a private method
+print(child._Parent__private_method())   # Outputs: This is a private method
+print(child._Child__private_method())    # Outputs: Child’s private method</code></pre></li></ol><ol type="1" id="09aab8da-34d7-4adb-afe3-c73f270a4134" class="numbered-list" start="3"><li>Single Trailing Underscore <code><strong>variable_</strong></code>: this is used to <span style="border-bottom:0.05em solid">avoid naming conflicts with Python keywords</span>. For example, if you need to use a variable name that is a reserved word in Python, you can append an underscore:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f8a14cea-1b53-47f2-993a-1c28c585e6a3" class="code"><code class="language-Python">class_ = MyClass()</code></pre></li></ol></details></li></ul><ul id="1ad509fb-4314-4b79-89dd-24d717fbf3a7" class="toggle"><li><details details=""><summary>@Decorators</summary><p id="fe9fdf8d-fffc-45c4-b8f4-e5fda88d110b" class="">Decorators in Python are a very powerful and useful tool, allowing you to <span style="border-bottom:0.05em solid">modify the behavior of a function or class</span>. They are essentially functions that take another function (or class) and extend its behavior without explicitly modifying its code.</p><ol type="1" id="0aaf4553-7aef-4cef-9e49-53718eb8b614" class="numbered-list" start="1"><li><strong>Function Decorators</strong>: functions that take another function as an argument and return a new function that enhances the original one. When you decorate a function, you are effectively replacing it with a decorated version.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d5c35177-d147-476a-9b87-95670b79cc48" class="code"><code class="language-Python">def my_decorator(func):
+    def wrapper():
+        print(&quot;Something is happening before the function is called.&quot;)
+        func()
+        print(&quot;Something is happening after the function is called.&quot;)
+    return wrapper
+
+# OPTION 1
+@my_decorator
+def say_hello():
+    print(&quot;Hello!&quot;)
+
+say_hello()
+
+# OPTION 2
+def say_hello():
+    print(&quot;Hello!&quot;)
+
+say_hello = my_decorator(say_hello)
+say_hello()
+
+# Outputs:
+# Something is happening before the function is called.
+# Hello!
+# Something is happening after the function is called.</code></pre></li></ol><ol type="1" id="c5f69398-c14c-4d63-851b-a3c945aa715d" class="numbered-list" start="2"><li><strong>Decorating With Arguments:</strong> this requires nesting one more level of functions.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7d366307-f9f2-44b1-8b1a-55b15eeee355" class="code"><code class="language-Python">def decorator_with_arguments(argument):
+    def my_decorator(func):
+        def wrapper():
+            print(f&quot;Argument is {argument}&quot;)
+            func()
+        return wrapper
+    return my_decorator
+
+@decorator_with_arguments(&quot;sample argument&quot;)
+def say_hello():
+    print(&quot;Hello!&quot;)
+
+say_hello()
+
+# Outputs:
+# Argument is sample argument
+# Hello!</code></pre></li></ol><ol type="1" id="3543b725-f663-4540-930e-bfd3623bb234" class="numbered-list" start="3"><li><strong>Class Decorators:</strong><p id="3f926922-cc72-4e7a-895c-e324e43a07a9" class="">
+</p></li></ol></details></li></ul><p id="23c1cf28-09fb-4484-86ca-80e194bb248d" class="">
+</p><p id="86f30f0d-14e8-4765-b1f5-c74d445eab83" class="">
+</p><ul id="9383e9c8-0327-4213-93a6-77817c2b89ae" class="toggle"><li><details details=""><summary>Processing and Handling Signals</summary><p id="6dc0e8f4-c4a7-4d3d-bac0-63854966da71" class="">
+</p></details></li></ul><p id="f9f40721-b4f6-49fe-8247-aac6ae2618c5" class="">
+</p><p id="69846bbb-49b7-44b0-84c0-596ec58e3243" class="">
+</p><p id="4acc4bbd-b505-4ab8-bf08-0ead524d999d" class="">
+</p><ul id="ce145e3d-fc06-40bb-97dd-9001d15d0bc2" class="toggle"><li><details details=""><summary>Upload a Folder to Jupyter</summary><p id="95caa02b-9a53-40f4-aff0-b38ed3bace21" class=""><mark class="highlight-teal_background">Convert the folder to a Zip file and upload it to Jupyter. Then, unzip it by creating a new Python file and running the following code:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8d695e49-74f6-44b4-bee0-61230900797b" class="code"><code class="language-Python">import zipfile as zf
+files = zf.ZipFile(&quot;ZippedFolder.zip&quot;, &#x27;r&#x27;)
+files.extractall(&#x27;Directory to extract&#x27;)
+files.close()</code></pre><p id="229bfe79-e7da-4526-b126-a5039029ad33" class=""><mark class="highlight-teal_background">To find the directory we can use the following code:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c0101e37-d18a-4965-8d57-ed5ac0870b22" class="code"><code class="language-Python">pwd</code></pre><p id="79d178ba-53f5-4d8d-9b86-4d0a11e65958" class="">
+</p></details></li></ul><ul id="14b02308-3172-4557-8985-1234cf9da179" class="toggle"><li><details details=""><summary>Replace Function</summary><p id="71bc9b66-8488-433a-9313-ab40e7e06779" class=""><mark class="highlight-teal_background">The </mark><mark class="highlight-teal_background"><code>replace()</code></mark><mark class="highlight-teal_background"> method replaces a specified phrase with another specified phrase.</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c92f99bb-ceee-4fdb-9bb9-4dc5edf0ee72" class="code"><code class="language-Python">s = &quot;MCMXCIV&quot;
+
+x = s.replace(&quot;IV&quot;, &quot;IIII&quot;).replace(&quot;XC&quot;, &quot;LXXXX&quot;).replace(&quot;CM&quot;, &quot;DCCCC&quot;)
+
+print(x)
+
+&quot;MDCCCCLXXXXIIII&quot;</code></pre></details></li></ul><ul id="52887311-f687-41a3-b336-341fce06b6b1" class="toggle"><li><details details=""><summary>Range Function and For Loops</summary><p id="4d5c4600-b7ee-47cb-9002-f30c271e1972" class=""><strong>RANGE FUNCTION:</strong></p><p id="4fa75f55-7dcd-4cd7-95ae-74ed976cf330" class=""><mark class="highlight-teal_background">Range Syntax:</mark></p><p id="c90e5c42-caee-4c25-a851-1576c0847396" class=""><mark class="highlight-red">Note: Everything in range is left inclusive and right exclusive [ )</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="62dab5d5-2510-47d3-8c61-7a5bb7eb8b50" class="code"><code class="language-Plain Text">range(start, stop, step)
+
+start Optional. An integer number specifying at which position to start. Default is 0
+stop Required. An integer number specifying at which position to stop (not included)
+step Optional. An integer number specifying the incrementation. Default is 1</code></pre><p id="865af3fa-e109-4fa8-bc6d-f14e41d1f981" class=""><mark class="highlight-teal_background">Examples:</mark></p><p id="829e46dd-742e-4d70-8be7-a86fb8397ff3" class=""><mark class="highlight-red">Note: use list() function to get a list as output and see the values of the range</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bc27c5ca-a25c-46c1-92ce-0132e8e5cc52" class="code"><code class="language-Python">list(range(10)) # [0,10)
+	[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+list(range(3, 10))
+	[3, 4, 5, 6, 7, 8, 9]
+
+list(range(2, 10, 3))
+	[2, 5, 8]
+
+list(range(3, 9, 3))
+	[3, 6]
+
+list(range(9,2,-2))
+	[9, 7, 5, 3]</code></pre><p id="c3f93e8c-938d-4e07-9568-0ec9094b2b97" class=""><strong>FOR LOOPS:</strong></p><p id="fbc3c748-f7aa-48c3-85d4-296bd47fc899" class=""><mark class="highlight-teal_background">Standard Syntax:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b06e24ad-139d-483a-83af-6ade801e1e5b" class="code"><code class="language-Python">for i in range(3):
+	print(i)
+
+Outcome:
+
+0
+1
+2</code></pre><p id="9364ef14-f22f-4c4c-80a0-4f098ce0d8ec" class=""><mark class="highlight-teal_background">Oneliner For Loop:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2eb1b1f1-db4f-4990-ad60-cea80c80a303" class="code"><code class="language-Python">for i in range(3): print(3) # for i in range(&lt;number&gt;)/list: &lt;action&gt;</code></pre><p id="8ddba66d-7598-46ad-b425-927a4566ef96" class=""><mark class="highlight-teal_background">For Loops with Ternary Operator:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c64224d1-f670-4a10-9043-2c8182f41409" class="code"><code class="language-Python">for i in range(&lt;number&gt;)/list: [on_true] if [expression] else [on_false]
+
+Example:
+
+for i in range(5): print(i**2 if i&lt;3 else 0)
+
+0
+1
+4
+0
+0</code></pre><p id="b4660eb1-ac53-4f59-945c-3c56ecb6da20" class=""><mark class="highlight-teal_background">List Comprehension:</mark> <mark class="highlight-teal">(Syntactical Sugar)</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7a5934ba-3e8f-45e9-b220-fcef4ae14b79" class="code"><code class="language-Python">Regulas way:
+
+squares = []
+for i in range(10):
+    if i%2==0:
+        squares.append(i**2)
+    
+print(squares)
+# [0, 4, 16, 36, 64]
+
+List comprehensoin way:
+
+print([i**2 for i in range(10) if i%2==0])
+# [0, 4, 16, 36, 64]</code></pre><p id="050640da-ce17-4be2-9c76-440718fad2af" class=""><mark class="highlight-teal_background">Dictionary Comprehension:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5fec3fb4-b6fc-4026-9a79-23d2f0538acf" class="code"><code class="language-Python">Regulas way:
+
+squares = {}
+for i in range(10):
+    if i%2==0:
+        squares[i] = i**2
+    
+print(squares)
+# {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}
+
+Dictionary comprehensoin way:
+
+print({i:i**2 for i in range(10) if i%2==0})
+# {0: 0, 2: 4, 4: 16, 6: 36, 8: 64}</code></pre><p id="920ce4ff-a8b9-47a3-89cb-67b53a1ed450" class=""><mark class="highlight-teal_background">Nested For Loop with List Comprehension:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fcd2905e-d868-416f-9f6c-b5c2da9f4cab" class="code"><code class="language-Python">Example:
+
+print([(i,j) for i in range(3) for j in range(3)])
+# [(0, 0), (0, 1), (0, 2), (1, 0), (1, 1),
+# (1, 2), (2, 0), (2, 1), (2, 2)]</code></pre><p id="c0ac1adb-ccf8-4b6f-8f04-2eabbb20a650" class=""><mark class="highlight-teal_background">Interesting For Loop:</mark><mark class="highlight-teal"> (Iterate on a list of sub-lists)</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0211cd8b-1f0a-4b49-ba29-d00349fac95a" class="code"><code class="language-Python">queries = [[0, 3], [2, 5], [2, 4]]
+
+for x, y in queries:
+	print(x) # represents the first element
+	print(y) # represents the second element</code></pre><p id="31e5e3b5-c53c-4452-a144-a2c93a49bb76" class="">
+</p></details></li></ul><ul id="717c02a6-e84e-49b9-9722-3114e60778aa" class="toggle"><li><details details=""><summary>Working with Strings</summary><p id="43c17f9a-1b62-4ed9-bc72-bd265d55a0e8" class=""><mark class="highlight-teal_background">Quotes:</mark></p><p id="e4f1c004-29c7-4346-b74d-6593caf5eb24" class=""><code>&#x27;</code> vs <code>&quot;</code> vs <code>&quot;&quot;&quot;</code> vs <code>&#x27;&#x27;&#x27;</code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7985e312-dafd-444a-b34d-6047bb89dd04" class="code"><code class="language-Python">&#x27;Hello World!&#x27; is the same as &quot;Hello World!&quot;</code></pre><p id="4c0db348-f201-44d0-a634-6745512f753c" class="">Use triple quotes for paragraph comments:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="775e71bc-4ed3-456f-a870-f8606b5d413e" class="code"><code class="language-Python">&#x27;&#x27;&#x27;
+Hello
+World!
+&#x27;&#x27;&#x27;
+
+OR:
+
+&quot;&quot;&quot;
+Hello
+World!
+&quot;&quot;&quot;</code></pre><p id="650a2a04-66c0-46c0-a775-9a89ef41ea33" class="">If it is required to embed double quotes as a part of string, the string itself should be put in single quotes. On the other hand, if single quoted text is to be embedded, string should be written in double quotes.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8a0fc82c-b5ad-48e5-aa10-eb094d7ab357" class="code"><code class="language-Python">&gt;&gt;&gt; var1=&#x27;Welcome to &quot;Python training&quot; from Tutorialspoint&#x27;
+&gt;&gt;&gt; var1
+&#x27;Welcome to &quot;Python training&quot; from Tutorialspoint&#x27;
+&gt;&gt;&gt; var2=&quot;Welcome to &#x27;Python training&#x27; from Tutorialspoint&quot;
+&gt;&gt;&gt; var2
+&quot;Welcome to &#x27;Python training&#x27; from Tutorialspoint&quot;</code></pre><p id="d88aead0-bf89-4376-8caa-2d97a9f3fd5c" class="">You can put a backslash character followed by a quote (<code>\&quot;</code>or <code>\&#x27;</code>). This is called an <em>escape sequence</em> and Python will remove the backslash, and put just the quote in the string:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="595e4845-5809-4d9c-81cd-64502fd597b8" class="code"><code class="language-Python">&gt;&gt;&gt; print(&#x27;Here\&#x27;s a single-quote escape&#x27;)
+Here&#x27;s a single-quote escape
+
+&gt;&gt;&gt; print(&quot;This is an \&quot;escape\&quot; of a double-quote&quot;)
+This is an &quot;escape&quot; of a double-quote</code></pre><p id="35f60b87-3085-464d-9132-f27d4d24a42f" class=""><mark class="highlight-teal_background">Len Function - Indexing - Slicing - Concatenation:</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="25dff935-3fad-44f8-9294-381043471424" class="code"><code class="language-Python">&gt;&gt;&gt; a = &#x27;abcde&#x27;
+&gt;&gt;&gt; len(a)
+5
+
+&gt;&gt;&gt; a[0] # Same result as a[-0]
+&#x27;a&#x27;
+
+&gt;&gt;&gt; a[-1] # Indexing
+&#x27;e&#x27;
+
+&gt;&gt;&gt; a[-2] # Indexing 
+&#x27;d&#x27;
+
+&gt;&gt;&gt; a[2:4] # Slicing
+&#x27;cd&#x27;
+
+&gt;&gt;&gt; a[1:4:2] # Slicing
+&#x27;bd&#x27;
+
+&gt;&gt;&gt; &#x27;1234&#x27; + &#x27;5678&#x27;
+&#x27;12345678&#x27;</code></pre><p id="4af22439-f9be-4098-9e7e-d2dc8363bd49" class=""><strong>Strings are a immutable data types</strong> which means that its value cannot be updated:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="92ddedab-5583-4a68-b94c-5c7b9070392b" class="code"><code class="language-Plain Text">&gt;&gt;&gt; a = &#x27;abcde&#x27;
+&gt;&gt;&gt; a[2] = &#x27;t&#x27;
+
+TypeError: &#x27;str&#x27; object does not support item assignment</code></pre><p id="2e369d05-790d-4b06-9e67-0dd88be3f5c4" class=""><mark class="highlight-teal_background">String Methods:</mark></p></details></li></ul><ul id="4eb8c0af-c94d-4cb1-b667-ff191a85d525" class="toggle"><li><details details=""><summary>Mutable and Immutable Objects</summary><p id="09c564f9-4d3e-43f5-ae36-830ac7639cb2" class="">Whenever an object is instantiated, it is assigned a unique object id. The type of the object is defined at the runtime and it can’t be changed afterwards. However, it’s state can be changed if it is a mutable object (immutable objects can’t change their state or content).</p><p id="a778309d-3169-4114-bbb5-5c602dd22fb3" class="">As a rule of thumb, Generally Primitive-like types are probably immutable and Customized Container-like types are mostly mutable.</p><table id="d5cd6dba-a558-44da-ac20-18b96438a991" class="simple-table"><tbody><tr id="44e9a144-6e95-4fb7-b7bd-29819efbb30c"><td id="v={G" class=""><strong>MUTABLE</strong></td><td id="dV[c" class=""><strong>IMMUTABLE</strong></td></tr><tr id="26e24dd3-8af9-4bbd-86e6-9c0eef9211fc"><td id="v={G" class="">Lists</td><td id="dV[c" class="">Ints</td></tr><tr id="0ad92095-42a8-4580-941d-7a92d559ed4a"><td id="v={G" class="">Sets</td><td id="dV[c" class="">Strings</td></tr><tr id="178e0f4f-b03e-4f18-b9c3-1fda577c280f"><td id="v={G" class="">Dictionaries</td><td id="dV[c" class="">Tuples</td></tr><tr id="266301bf-d17f-47cb-a854-c4663cd3ea43"><td id="v={G" class="">…</td><td id="dV[c" class="">…</td></tr></tbody></table><figure id="fea675e7-b0cc-4abe-9257-3f277788329a"><a href="https://levelup.gitconnected.com/can-you-solve-these-3-seemingly-easy-python-problems-2c793967cd2c" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Can you solve these 3 (seemingly) easy Python problems?</div><div class="bookmark-description">Try to solve the following problems, then check the answers below. Tip: All the problems have something in common so checking the solution to the first one before solving the remaining ones can lessen the challenge. Imagine we have a couple of variables: What will printing of l and s result in?</div></div><div class="bookmark-href"><img src="https://miro.medium.com/fit/c/256/256/1*MMpkJtmeCME-6BmGNH5l8A.png" class="icon bookmark-icon"/>https://levelup.gitconnected.com/can-you-solve-these-3-seemingly-easy-python-problems-2c793967cd2c</div></div><img src="https://miro.medium.com/max/1200/1*9dHq4A4-ZhnhBFRCISC7ug.jpeg" class="bookmark-image"/></a></figure><p id="638aeb0e-da1d-4677-acb0-667cbc75a9b6" class=""><strong>Exception :</strong> However, there is an exception in immutability as well. We know that tuple in python is immutable. But the tuple consists of a sequence of names with unchangeable bindings to objects. Consider a tuple:<div class="indented"><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5f0bb61e-d7b2-4052-8e8a-f426042469e6" class="code"><code class="language-Plain Text" style="white-space:pre-wrap;word-break:break-all">tup = ([3, 4, 5], &#x27;myname&#x27;)</code></pre><p id="24375556-add8-4431-9ab1-c6899d8682e8" class="">The tuple consists of a string and a list. Strings are immutable so we can’t change its value. But the contents of the list can change. <strong>The tuple itself isn’t mutable but contain items that are mutable.</strong></p></div></p></details></li></ul><ul id="ac762449-4cab-4063-bf58-669097faa131" class="toggle"><li><details details=""><summary>Shallow and Deep Copy</summary><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ea6e661b-fb18-4a55-90ae-cbdc134f4461" class="code"><code class="language-Python">x = 1
+s = {7}
+l = [x, 5, s, {3}]
+
+Method 1 (SIMPLY GIVES THE SAME LIST ANOTHER NAME. THUS, IT POINT TO THE SAME OBJECT):
+	m = l
+	
+Method 2 (SHALLOW COPY):	
+	n = l[:]
+
+Method 3 (SHALLOW COPY):
+	o = list(l)
+
+Method 4 (SHALLOW COPY):
+	p = copy.copy(l)
+
+Method 5 (DEEP COPY):
+	r = copy.deepcopy(l)
+</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d9f9240f-3b85-4238-898b-61eb96e230b8" class="code"><code class="language-Python"># shake things up
+x += 1
+l[1] += 1
+s.add(8)
+l[3].add(4)
+l.append(2)</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bbb52d39-a936-4dc5-accd-f2ff268d2a7c" class="code"><code class="language-Python">RESULTS:
+
+Original List:
+&gt;&gt; l
+[1, 6, {7, 8}, {3, 4}, 2]
+
+Method 1:
+&gt;&gt; m
+[1, 6, {7, 8}, {3, 4}, 2]
+
+Method 2-4:
+&gt;&gt; n
+[1, 5, {7, 8}, {3, 4}]
+&gt;&gt; o
+[1, 5, {7, 8}, {3, 4}]
+&gt;&gt; p
+[1, 5, {7, 8}, {3, 4}]
+
+Method 5:
+&gt;&gt; r
+[1, 5, {7}, {3}]</code></pre><ul id="3ac253f5-113a-41c8-81d3-61b53289346f" class="bulleted-list"><li style="list-style-type:disc">Assignment <code>m = l</code> does not create a copy, it merely gives our list another name. All the modifications of <code>l</code> will be visible in <code>m</code> as well as they refer to the same object.</li></ul><ul id="d329e341-1216-4608-9229-7ba548840252" class="bulleted-list"><li style="list-style-type:disc">The following methods of copying lists are equivalent: <code>n = l[:]</code>, <code>o = list(l)</code> and <code>p = copy.copy(l)</code>. Altering <strong>mutable</strong> elements of the original list <code>l</code> will affect these shallow copies as well. (You can find more information about mutable and immutable variables <a href="https://levelup.gitconnected.com/can-you-solve-these-3-seemingly-easy-python-problems-2c793967cd2c">here</a>)</li></ul><ul id="b98c267f-6b8b-429d-b2cc-107d2cb30200" class="bulleted-list"><li style="list-style-type:disc">The only truly independent copy is <code>r = copy.deepcopy(l)</code>. Altering the elements (mutable or immutable) in the original list <code>l</code> will not affect this copy.</li></ul><figure id="b124537c-2c79-4c46-a0d4-06a573079224"><a href="https://levelup.gitconnected.com/five-ways-to-copy-a-list-in-python-f6f179d9785b" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Five ways to copy a list in Python</div><div class="bookmark-description">&quot;Surely there can be nothing too complicated about such a basic thing as copying a list&quot;, you would think. Perhaps I can surprise you with a couple of subtle nuances. When it comes to different methods of copying lists, Python offers quite a repertoire: How do these methods differ?</div></div><div class="bookmark-href"><img src="https://miro.medium.com/fit/c/256/256/1*MMpkJtmeCME-6BmGNH5l8A.png" class="icon bookmark-icon"/>https://levelup.gitconnected.com/five-ways-to-copy-a-list-in-python-f6f179d9785b</div></div><img src="https://miro.medium.com/max/1200/1*cDzqpFv1-xCUxEOWZx_c6Q.jpeg" class="bookmark-image"/></a></figure></details></li></ul><ul id="9b1664a9-858e-4c53-9fc2-fc20e606708c" class="toggle"><li><details details=""><summary>Python Operators</summary><figure id="d89b47f5-f352-4c7e-98e8-27abbf3b6838"><a href="https://www.w3schools.com/python/python_operators.asp" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Python Operators</div><div class="bookmark-description">Operators are used to perform operations on variables and values.</div></div><div class="bookmark-href"><img src="https://www.w3schools.com/favicon.ico" class="icon bookmark-icon"/>https://www.w3schools.com/python/python_operators.asp</div></div><img src="https://www.w3schools.com/images/w3schools_logo_436_2.png" class="bookmark-image"/></a></figure></details></li></ul><ul id="970185cd-31ca-40f6-b586-c185c005c389" class="toggle"><li><details details=""><summary>Pandas Library</summary><p id="379548c5-a53a-4c5d-a47d-9b468bf7c36a" class=""><mark class="highlight-red">Note: Pandas is built with two different data structures: Series and DataFrames.</mark></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1d608fce-1177-422c-8a52-5e5eedfe938e" class="code"><code class="language-Python">import pandas as pd</code></pre><p id="3578e3db-edc7-426b-ac8a-f2832dbc4844" class=""><mark class="highlight-teal_background">Pandas Series:</mark></p><figure id="8c4d6067-916d-412e-892e-22416b5c9688"><div class="source"><a href="1.2_Pandas_series.pdf">1.2_Pandas_series.pdf</a></div></figure><p id="36b04caa-98a7-40ba-9a5c-9e0a3e3dfd21" class=""><strong>OVERVIEW:</strong></p><p id="0d796682-35b1-43d7-8f27-cd704c345478" class="">Pandas Series are indexed (have a key) and <mark class="highlight-red_background">sequential (ordered)</mark>. Thus, it can be accesses by position or by key. However, it is important to note that Pandas Series are not sequential once they are sorted - Pandas Series are sequential because the default index is ordered starting at 0.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e79180fc-b1a4-481b-9fa5-3727658e5510" class="code"><code class="language-Python">market_caps = pd.Series([954.7, 514.4, 95.8, 76.3, 57.9, 45.7, 41.0, 38.7, 28.8, 25.8])
+
+0    954.7
+1    514.4
+2     95.8
+3     76.3
+4     57.9
+5     45.7
+6     41.0
+7     38.7
+8     28.8
+9     25.8
+dtype: float64</code></pre><p id="d7031b33-1adf-4991-8b87-94561125a908" class="">It is possible to assign a name to the Series:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b1d6ec00-c74e-4b25-9af3-102e7f704699" class="code"><code class="language-Python">market_caps.name = &#x27;Market caps of top 10 cryptocurrencies in billions USD&#x27;
+
+BTC     954.7
+ETH     514.4
+BNB      95.8
+...
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: float64</code></pre><p id="0f494d69-e22b-45a1-8dd2-84a4fd66a079" class="">Pandas Series run numpy underneath:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e3e92c93-9948-456d-b330-e0ce3b7bc421" class="code"><code class="language-Python">type(market_caps.values)
+
+numpy.ndarray</code></pre><p id="bafced5e-9312-4bd3-a8b6-ce06c61345fc" class="">A key difference between np.ndarray and pd.series is that Pandas Series are indexed and Numpy Arrays aren’t. We can modify the index of a pd.series:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c3fe83e0-3341-4a7e-bd14-991b43c1dbf5" class="code"><code class="language-Python"> market_caps.index = [&#x27;BTC&#x27;, &#x27;ETH&#x27;, &#x27;BNB&#x27;, &#x27;USDT&#x27;, &#x27;SOL&#x27;, &#x27;ADA&#x27;, &#x27;USDC&#x27;, &#x27;XRP&#x27;, &#x27;DOT&#x27;, &#x27;LUNA&#x27;]
+
+BTC     954.7
+ETH     514.4
+BNB      95.8
+...
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: float64</code></pre><p id="b5a6c5f1-1663-490e-bd24-3d7344261c56" class="">Construct the Pandas Series from a dictionary:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ebe3fd47-be63-4bcf-821e-1971db8b71d7" class="code"><code class="language-Python">pd.Series({
+    &#x27;BTC&#x27;: 954.7, 
+    &#x27;ETH&#x27;: 514.4, 
+    &#x27;BNB&#x27;: 95.8, 
+    &#x27;USDT&#x27;: 76.3, 
+    &#x27;SOL&#x27;: 57.9, 
+    &#x27;ADA&#x27;: 45.7, 
+    &#x27;USDC&#x27;: 41.0, 
+    &#x27;XRP&#x27;: 38.7, 
+    &#x27;DOT&#x27;: 28.8, 
+    &#x27;LUNA&#x27;: 25.8
+}, name=&#x27;Market caps of top 10 cryptocurrencies in billions USD&#x27;)</code></pre><p id="509d1352-5c68-4e3d-804b-0d944b97f20d" class="">Other way to set the Pandas Series:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="64fbb990-a9ff-4872-b2a7-b1ce2d51ee12" class="code"><code class="language-Python">pd.Series(
+    [954.7, 514.4, 95.8, 76.3, 57.9, 45.7, 41.0, 38.7, 28.8, 25.8],
+    index=[&#x27;BTC&#x27;, &#x27;ETH&#x27;, &#x27;BNB&#x27;, &#x27;USDT&#x27;, &#x27;SOL&#x27;, &#x27;ADA&#x27;, &#x27;USDC&#x27;, &#x27;XRP&#x27;, &#x27;DOT&#x27;, &#x27;LUNA&#x27;],
+    name=&#x27;Market caps of top 10 cryptocurrencies in billions USD&#x27;
+)</code></pre><p id="96e729fe-f382-41ab-a90b-0226bfa9a430" class=""><strong>SERIES INDEXES:</strong></p><p id="7a929d52-28ee-49f9-b544-93850e0e6dd3" class="">If we access the Pandas Series with a single element, it will return the relevant value:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="64079e77-cce8-4cfc-bc07-f47aba196f53" class="code"><code class="language-Python">market_caps[&#x27;BTC&#x27;]
+
+954.7</code></pre><p id="1bec440f-9e4b-4906-858d-c6685ae28907" class="">If we access the Pandas Series with a list, it will return the series for the values of interest:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="201354a9-2a66-491a-9ce1-8d523f626187" class="code"><code class="language-Python">market_caps[[&#x27;BTC&#x27;, &#x27;DOT&#x27;]]
+
+BTC    954.7
+DOT     28.8
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: float64
+
+market_caps[[&#x27;BTC&#x27;]]
+
+BTC    954.7
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: float64</code></pre><p id="54f78da5-b008-431a-ac95-97d8a33e17cc" class="">We use <mark class="highlight-orange_background">.loc </mark>to be explicit about accessing a Pandas Series by index/key. We use <mark class="highlight-orange_background">.iloc</mark> to be explicit about accessing a Pandas Series by location/position. </p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9b53e397-b5ec-47e2-be55-11a961d06073" class="code"><code class="language-Python">series = pd.Series([10, 2, 3])
+
+0    10
+1     2
+2     3
+dtype: int64
+
+series[0] # we expect 10
+
+series.sort_values(inplace=True) # now we sort the Pandas Series
+
+1     2
+2     3
+0    10
+dtype: int64
+
+series[0]
+
+10 # We don&#x27;t get the element from the location 0. If we don&#x27;t specify .iloc, we will access by key and not by location.
+
+series.iloc[0]
+
+2</code></pre><p id="727f8820-64c5-49ab-a4ab-89ccd7385cf3" class=""><mark class="highlight-orange_background">.loc</mark> to access by index:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="21e82d6f-c8e9-4be7-86c4-3d8f9608870e" class="code"><code class="language-Python">series[0].loc # We expect 10</code></pre><p id="15c5703e-6756-4b67-bc2d-e325667aafa0" class=""><mark class="highlight-orange_background">.iloc</mark> to access by location:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="89768c16-73b9-4e97-92d4-1770c0df9055" class="code"><code class="language-Python">series[0].iloc # We expect 2</code></pre><p id="511bb262-38b7-4f14-b6ad-6bb6357214ac" class=""><strong>SERIES FILTERING:</strong></p><p id="2f08f1a6-94c8-49d0-8547-65f7765ea87b" class="">To filter, we can create a boolean series and then select on that:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aa53376e-8cff-46fc-99be-d2c9eb4c2ab6" class="code"><code class="language-Python">market_caps &lt; 50
+
+BTC     False
+ETH     False
+BNB     False
+USDT    False
+SOL     False
+ADA      True
+USDC     True
+XRP      True
+DOT      True
+LUNA     True
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: bool</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6291f6e8-e38b-4123-8e61-c3385bec0095" class="code"><code class="language-Python">market_caps[market_caps &lt; 50]
+
+ADA     45.7
+USDC    41.0
+XRP     38.7
+DOT     28.8
+LUNA    25.8
+Name: Market caps of top 10 cryptocurrencies in billions USD, dtype: float64</code></pre><p id="ef7eda40-0f83-4cfb-851e-667ac7484900" class="">When there are multiple condition, they aren’t analyzed line by line. Instead, they are analyzed by their indexes. Use parenthesis for each condition:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="672ba83d-24a6-4ccc-b2f5-1f2c3ef1c0df" class="code"><code class="language-Python"># Animals in Hawaii            # Animals in Nigeria
+Hawaii_animals                 Nigeria_animals
+Dog    50                      Zebra   2092
+Jirafe 60                      Dog     4545
+Frog   2                       Jirafe  209
+Zebra  8                       Frog    4355
+
+Hawaii_animals &lt; 40            Nigeria_animals &gt; 1000
+
+Dog       False                Zebra   True
+Jirafe    False                Dog     True
+Frog      True                 Jirafe  False
+Zebra     True                 Frog    True
+
+Hawaii_animals[(Hawaii_animals &lt; 40) &amp; (Nigeria_animals &gt; 1000)]
+
+THE RESULTS IS NOT:
+   
+Zebra   8
+
+THE RESULT IS:
+
+Frog    2
+Zebra   8</code></pre><p id="a92b3f28-ad95-4707-a4cc-48bad08c686f" class=""><mark class="highlight-teal_background">Pandas DataFrames:</mark></p><p id="79f98535-c8fe-4286-9e13-0cace1ec01d1" class="">1.3_Pandas_DataFrame at C:\Users\dpedr\OneDrive\Documents\01_Education\Higher_education\Berkeley_MFE\Pre-program_python</p><p id="f27eb30b-736b-482d-8024-68d078bb8d8f" class=""><mark class="highlight-red">Note: a DataFrame is the representation of a table. DataFrames are made out of Pandas Series. The pandas DataFrame is the workhorse of most data science and analytics projects.</mark></p><p id="1fd8dbf6-8107-4aa8-b4c8-b1a86b91bd9a" class="">Each row <strong>and</strong> column is represented as a pandas Series.</p><p id="34168ade-236e-42a8-891b-9f97f6c5e0ab" class="">Create a DataFrame:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c82fe8c1-47a2-4c8c-8f8e-875ec5b0b57f" class="code"><code class="language-Python">&gt;&gt;&gt; import pandas as pd
+ 
+# initialize data of lists.
+&gt;&gt;&gt; data = {&#x27;Name&#x27;: [&#x27;Tom&#x27;, &#x27;nick&#x27;, &#x27;krish&#x27;, &#x27;jack&#x27;], &#x27;Age&#x27;: [20, 21, 19, 18]}
+ 
+# Create DataFrame
+&gt;&gt;&gt; df = pd.DataFrame(data)</code></pre><p id="f11f6267-76ae-48ad-8212-92a86e1cb5b7" class="">Methods:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f5986443-de65-4c98-8ebb-ac8ceadae59b" class="code"><code class="language-Python">&gt;&gt;&gt; df.info() # Can be use as a fast check for null values
+							# It also helps to check the type of the columns
+
+&lt;class &#x27;pandas.core.frame.DataFrame&#x27;&gt;
+RangeIndex: 4 entries, 0 to 3
+Data columns (total 2 columns):
+ #   Column  Non-Null Count  Dtype
+---  ------  --------------  -----
+ 0   Name    4 non-null      object
+ 1   Age     4 non-null      int64
+dtypes: int64(1), object(1)
+memory usage: 192.0+ bytes</code></pre><p id="a5690a49-e3e7-46a0-970a-6b1df1df9ce3" class="">axis = 0 → columns</p><p id="2f5135f0-6895-40ae-bb4e-860792209ea6" class="">axis = 1 → rows</p><figure id="d8aa5c36-293e-400c-9e81-95d7e0845f26" class="image"><a href="Untitled%204.png"><img style="width:478px" src="Untitled%204.png"/></a></figure><p id="45cdb726-d8e9-4ec5-9498-04bd0488dabd" class="">
+</p></details></li></ul><ul id="26ec44ec-a42d-4982-b248-4be948fdaac2" class="toggle"><li><details details=""><summary>*args, **kwargs, and Unpacking Operators</summary><p id="973ad43c-4bd1-4a82-a65b-69a71c5215b0" class=""><mark class="highlight-teal_background">POSITIONAL AND KEYWORD ARGUMENTS:</mark></p><p id="3a9a5c2f-7116-480f-b1f2-fec14b6efd64" class=""><mark class="highlight-red">Note: positional arguments </mark><strong><mark class="highlight-red">always </mark></strong><mark class="highlight-red">go before keyword arguments.</mark></p><p id="70e537c8-85b4-4a8a-bccd-16f9d31fa91b" class="">Python functions have two types of arguments: </p><ul id="547fdacd-a897-4a3b-97b4-2b50d369bbb6" class="bulleted-list"><li style="list-style-type:disc">Positional arguments: must be included in the correct order → <mark class="highlight-orange"><strong>*args</strong></mark></li></ul><ul id="f66671d8-bd23-4d65-b6f3-44a3e0e77c46" class="bulleted-list"><li style="list-style-type:disc">Keyword arguments: are included with a keyword and equals sign → <mark class="highlight-orange"><strong>**kwargs</strong></mark></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3efb241c-b2bd-433e-a6ec-cb4b5eca603d" class="code"><code class="language-Python"># === *args and **kwargs ===
+def f(*args,**kwargs):
+	print(f&#x27;positinoal: {args}&#x27;)
+	print(f&#x27;keyword: {kwargs}&#x27;)
+
+&gt;&gt;&gt; f(1,2,3,[4,5,6],a=2,b=5,c=None,d=&#x27;xyz&#x27;,e=[1,2,3])
+positinoal: (1, 2, 3, [4, 5, 6])
+keyword: {&#x27;a&#x27;: 2, &#x27;b&#x27;: 5, &#x27;c&#x27;: None, &#x27;d&#x27;: &#x27;xyz&#x27;, &#x27;e&#x27;: [1, 2, 3]}
+
+# === Catch-up on arguments with *args and **kwargs ===
+def f(x,y,z,*args,b=100,**kwargs):
+	print(f&#x27;positinoal: {args}&#x27;)
+	print(f&#x27;keyword: {kwargs}&#x27;)
+
+&gt;&gt;&gt; f(1,2,3,[4,5,6],a=2,b=5,c=None,d=&#x27;xyz&#x27;,e=[1,2,3])
+positinoal: ([4, 5, 6],)
+keyword: {&#x27;a&#x27;: 2, &#x27;c&#x27;: None, &#x27;d&#x27;: &#x27;xyz&#x27;, &#x27;e&#x27;: [1, 2, 3]}</code></pre><p id="205c8110-14a8-49d6-a9de-57869f958c27" class="">=============================================================</p><p id="f3fdbe66-8745-41e5-800a-a20aef7c6522" class=""><strong>*ARGS and **KWARGS:</strong></p><p id="f772149e-4d6d-4f87-abdf-d687951fe4df" class="">Sometimes, it is not possible to predict the number of arguments that will be provided to a function. This can be a problem as you could get stuck writing the same code for variable numbers of arguments if handled incorrectly. *args and **kwargs are the solution!</p><p id="7fb4736c-0119-4f05-b870-1587202395f2" class=""><mark class="highlight-teal_background">*args: - TAKES ALL POSITIONAL ARGUMENTS</mark></p><ul id="627bf1c0-71b1-4acb-8496-f7f0a4e53500" class="bulleted-list"><li style="list-style-type:disc">Non-keyword means that the arguments should not be a dictionary (key-value pair), and they can be numbers or strings.</li></ul><ul id="0e9b1edc-3200-4eb6-8a23-62e8d7265396" class="bulleted-list"><li style="list-style-type:disc">One thing to note here is that &quot;args&quot; is just an identifier. It can be named anything relevant.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3748451d-0ebe-429a-bbce-3da5a7d0144f" class="code"><code class="language-Python">&gt;&gt;&gt; def multiplyNumbers(*numbers):
+.       product=1
+.       for n in numbers:
+.           product*=n
+.       return product
+ 
+&gt;&gt;&gt; print(&quot;product:&quot;,multiplyNumbers(4,4,4,4,4,4))
+
+product:4096</code></pre><p id="25f20f78-0414-45dc-8502-3aff2239bec0" class=""><mark class="highlight-teal_background">**kwargs: - TAKES ALL KEY ARGUMENTS</mark></p><ul id="4ec122c1-2745-4825-afdc-5e4b522afee6" class="bulleted-list"><li style="list-style-type:disc">**kwargs allows us to pass any number of keyword arguments.</li></ul><ul id="21f87d81-d42a-43a7-95d7-b50e0cb14bd2" class="bulleted-list"><li style="list-style-type:disc">Python will consider any variable name with two asterisks(**) before it as a keyword argument.</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="eae6e4b4-655b-45cf-998c-578e6ea5c81c" class="code"><code class="language-Python">&gt;&gt;&gt; def makeSentence(**words):
+.      sentence=&#x27;&#x27;
+.     for word in words.values():
+.          sentence+=word
+.      return sentence
+ 
+&gt;&gt;&gt; print(&#x27;Sentence:&#x27;, makeSentence(a=&#x27;Kwargs &#x27;,b=&#x27;are &#x27;, c=&#x27;awesome!&#x27;))
+
+Sentence:Kwargs are awesome!</code></pre><p id="0bf12bab-47ff-4453-b4db-39109e76f0b3" class=""><mark class="highlight-red">NOTE: the order of the arguments matter:</mark><div class="indented"><p id="ace1e8ca-a99a-4020-9ba6-07cdf8130644" class=""><mark class="highlight-red">1. Standard Arguments</mark></p><p id="54f703a8-9458-41ef-b409-34649aea6444" class=""><mark class="highlight-red">2. *args</mark></p><p id="5b1974d7-ecae-4939-bc9b-37c599e90971" class=""><mark class="highlight-red">3. **kwargs</mark></p></div></p><p id="6eaec894-6aec-49a7-9fb8-6cf747544a9a" class=""><mark class="highlight-teal_background"><strong>UNPACKING OPERATORS:</strong></mark></p><p id="202a8460-5daa-444d-87cb-04ec92e8a1cf" class=""><mark class="highlight-red">MOTE: Unpacking operators are used to unpack the variables from iterable data types like lists, tuples, and dictionaries.</mark></p><ul id="c19c7406-2cf3-4e05-80d3-7ff12bd5d10d" class="bulleted-list"><li style="list-style-type:disc">A single asterisk(*) is used on <strong>any </strong>iterable given by Python:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="9d690e09-8970-4bd5-bbff-3325f656440c" class="code"><code class="language-Python"># === Example 1 ===
+def g(a,b):
+	return a + b
+
+x = [1,2]
+
+&gt;&gt;&gt; g(x[0],x[1])
+3
+
+&gt;&gt;&gt; g(*x)
+3</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="98bb816b-9606-4bf4-a41c-632c90ccd84a" class="code"><code class="language-Python"># === Example 2 ===
+&gt;&gt;&gt; carCompany = [&#x27;Audi&#x27;,&#x27;BMW&#x27;,&#x27;Lamborghini&#x27;]
+&gt;&gt;&gt; print(*carCompany)
+
+Audi BMW Lamborghini</code></pre><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d0a13699-e943-4182-b972-1904f044a51a" class="code"><code class="language-Python"># === Example 3 ===
+def makeSentence(*words):
+    sentence=&#x27;&#x27;
+    for word in words:
+        sentence+=word
+    return sentence
+
+&gt;&gt;&gt; print(&#x27;Sentence:&#x27;, makeSentence(&#x27;Kwargs &#x27;,&#x27;are &#x27;,&#x27;awesome!&#x27;))
+Sentence: Kwargs are awesome!</code></pre><ul id="09f34b56-350a-4a2b-ba9e-35a1d98228ed" class="bulleted-list"><li style="list-style-type:disc">The double asterisk(**) is used to iterate over <strong>dictionaries.</strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="34c54105-9044-47e7-aa98-1de6bf7640cb" class="code"><code class="language-Python"># === Example 1 ===
+&gt;&gt;&gt; fruit_prices = {&#x27;apple&#x27;: 0.40, &#x27;orange&#x27;: 0.35}
+&gt;&gt;&gt; vegetable_prices = {&#x27;pepper&#x27;: 0.20, &#x27;onion&#x27;: 0.55}
+&gt;&gt;&gt; # How to use the unpacking operator **
+&gt;&gt;&gt; {**vegetable_prices, **fruit_prices}
+{&#x27;pepper&#x27;: 0.2, &#x27;onion&#x27;: 0.55, &#x27;apple&#x27;: 0.4, &#x27;orange&#x27;: 0.35}
+&gt;&gt;&gt; # You can use this feature to iterate through multiple dictionaries
+&gt;&gt;&gt; for k, v in {**vegetable_prices, **fruit_prices}.items():
+...     print(k, &#x27;-&gt;&#x27;, v)
+...
+pepper -&gt; 0.2
+onion -&gt; 0.55
+apple -&gt; 0.4
+orange -&gt; 0.35</code></pre><figure id="1a75a6ac-5019-4b67-a2d7-db5bc7cd2e6e"><a href="https://www.scaler.com/topics/python/args-and-kwargs-in-python/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">*Args And **Kwargs in Python - Scaler Topics</div><div class="bookmark-description">args specifies the number of non-keyworded arguments that can be passed and the operations that can be performed on the function in Python whereas **kwargs is a variable number of keyworded arguments that can be passed to a function that can perform dictionary operations.</div></div><div class="bookmark-href"><img src="https://www.scaler.com/topics/favicon.ico" class="icon bookmark-icon"/>https://www.scaler.com/topics/python/args-and-kwargs-in-python/</div></div><img src="https://www.scaler.com/topics/images/Args-and-Kwargs-in-python.webp" class="bookmark-image"/></a></figure></details></li></ul><ul id="7c14ad01-1833-4921-9337-55fb85cc49d3" class="toggle"><li><details details=""><summary>Data Structure Definitions (Lists, Tuples, Dictionaries, and Sets)</summary><p id="c0f6a0cb-3202-4c0e-a73f-c0321916216a" class=""><mark class="highlight-teal_background">LIST:</mark> <a href="https://www.w3schools.com/python/python_lists.asp">Python Lists (w3schools.com)</a></p><p id="d5c1cfaf-73a8-4c86-bfdb-60a25eff1e38" class="">It is an <strong><mark class="highlight-blue">ordered </mark></strong><mark class="highlight-blue">(can be accesses using the location index)</mark><strong><mark class="highlight-blue"> </mark></strong>collection of <strong><mark class="highlight-blue">mutable </mark></strong>data where the items don’t have to be of the same <strong><mark class="highlight-blue">type.</mark></strong></p><p id="bb37f060-abf6-4172-b638-d622f3760155" class=""><mark class="highlight-teal_background">DICTIONARY:</mark> <a href="https://www.w3schools.com/python/python_dictionaries.asp">Python Dictionaries (w3schools.com)</a></p><p id="613d9bbb-36e4-4e28-9d87-34ada7980908" class="">It is an <mark class="highlight-blue"><strong>unordered</strong></mark> collection of key:value pairs data where the items don’t have to be of the same <strong><mark class="highlight-blue">type.</mark></strong></p><p id="2e9ad1cb-2bae-4e87-a5a3-f7ee0bea3277" class=""><mark class="highlight-teal_background">TUPLE:</mark> <a href="https://www.w3schools.com/python/python_tuples.asp">Python Tuples (w3schools.com)</a></p><p id="fa1797d9-69d2-4520-8a07-3b5a52dc2e12" class="">It is an <strong><mark class="highlight-blue">ordered </mark></strong><mark class="highlight-blue">(can be accesses using the location index - items can appear in a different order every time you use them, and cannot be referred to by index or key)</mark><strong><mark class="highlight-blue"> </mark></strong>collection of <mark class="highlight-blue"><strong>immutable </strong></mark><mark class="highlight-blue">(items are unchangeable can’t be added or removed once created)</mark> data where the items don’t have to be of the same <strong><mark class="highlight-blue">type.</mark></strong></p><p id="4ab8445f-c826-49eb-8a98-e9409d0ddc5f" class=""><mark class="highlight-teal_background">SET:</mark> <a href="https://www.w3schools.com/python/python_sets.asp">Python Sets (w3schools.com)</a></p><p id="7f7b9cb2-ca6c-4a84-b8a8-5fa46ac19230" class="">It is an <strong><mark class="highlight-blue">unordered </mark></strong><mark class="highlight-blue">(items do not have a defined order)</mark><strong><mark class="highlight-blue"> </mark></strong>collection of <strong><mark class="highlight-blue">immutable* </mark></strong><mark class="highlight-blue">(items<br/> are unchangeable, but you can remove items and add new items)<br/></mark> data that doesn’t allow any duplicate elements. where the items don’t have to be of the same <strong><mark class="highlight-blue">type.</mark></strong></p><p id="5d1a395d-c682-4aa1-ba05-680413f8dd59" class="">
+</p></details></li></ul><ul id="c9163655-ca5a-48f3-93ab-00209ff32990" class="toggle"><li><details details=""><summary>Difference Between np.arange() and np.linspace()</summary><p id="1e876fda-0bf0-4d45-9810-2fd5f7c3bc06" class="">Both functions are used to create <code>numpy.ndarray</code>. However, these are the differences:</p><p id="db1cfb08-b83b-4374-b45e-b1f9e43e07d4" class=""><mark class="highlight-teal_background">np.arrange():</mark></p><p id="a779ed7b-a57c-4c13-a979-5f38939e4a7c" class=""><a href="https://numpy.org/doc/stable/reference/generated/numpy.arange.html">numpy.arange — NumPy v1.24 Manual</a></p><p id="a1422b45-2f83-4103-9a7c-fcb060e4967a" class="">Allows to select how many elements to include within a min and a max value.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5e237219-54fb-4426-8a5a-f61366f237b7" class="code"><code class="language-Python">&gt;&gt;&gt; np.arange(0,1,.1)
+array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9])</code></pre><p id="e0549b32-0c28-4c5c-8e5a-efa485b26c24" class=""><mark class="highlight-teal_background">np.linspace():</mark></p><p id="c6cdc03d-c528-49dc-bcf4-a5b4a1b71306" class=""><a href="https://numpy.org/doc/stable/reference/generated/numpy.linspace.html">numpy.linspace — NumPy v1.24 Manual</a></p><p id="289ff4f7-7514-411b-b946-6fdaa23df475" class="">Allows to select the step size between elements from a min and a max value.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="96154b89-7ec4-4696-a9b1-73c089f620d0" class="code"><code class="language-Python">&gt;&gt;&gt; np.linspace(0,1,11)
+array([0. , 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1. ])</code></pre><p id="603a32b6-5239-4a32-b6c9-308ffbabd0ab" class="">
+</p></details></li></ul><ul id="0db21f86-a88a-42cf-af81-071c2576ac61" class="toggle"><li><details details=""><summary>The SettingWithCopyWarning ⚠️</summary><p id="14699a67-4afa-478f-982c-573f47a97e3d" class="">Alerts of potential bugs or issues regarding unexpected results of an opperation.</p><p id="402f3352-7d68-48e6-b937-7b7adda196b5" class="">
+</p></details></li></ul><ul id="64f23b62-d714-400b-abb7-14565258fd73" class="toggle"><li><details details=""><summary>!pip install</summary><p id="1d87ee7a-9270-4508-a91a-d90289b156f4" class="">You can install a package directly from the code using !pip instead of going to the terminal to do so.</p></details></li></ul><ul id="1fce872d-b6fd-4c75-82e5-610375def32f" class="toggle"><li><details details=""><summary>Numpy Vectorization</summary><p id="6ae834ec-12e1-436e-9646-62a5c92075fe" class="">Numpy has restrictions on data types for the same type so that it can use C+ in the background which makes it fast. So we need to make sure that everything we code is in arrays for it to be fast. </p></details></li></ul><ul id="7f4dde58-1fe4-418a-9562-66959acce791" class="toggle"><li><details details=""><summary>Useful Functions</summary><p id="329cd5f0-55f4-4fc9-a993-8e184af9f628" class=""><mark class="highlight-teal_background"><strong>isalpha()</strong></mark></p><p id="437f1b2a-443f-4a1e-ac8c-c06ec3a59aed" class="">Check if a character belongs to English letters in Python using the <code><strong>isalpha()</strong></code></p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="da661ed2-bfac-43cd-8374-f7438a4770b5" class="code"><code class="language-Python">char = &#x27;A&#x27;
+
+if char.isalpha():
+    print(f&quot;&#x27;{char}&#x27; is an English letter.&quot;)
+else:
+    print(f&quot;&#x27;{char}&#x27; is not an English letter.&quot;)</code></pre></details></li></ul><figure id="193976a9-4e97-48ef-8a44-560971b4f9f5"><div class="source"><a href="Python_cheat_sheet.pdf">Python_cheat_sheet.pdf</a></div></figure><p id="967933f1-1b44-45f7-912d-c6f14907d24d" class="">
+</p><p id="500d799e-e058-43b2-b2e1-605047d6ad7b" class="">
+</p><p id="4e8aecc9-c44b-46c6-9586-0ab4286372c0" class="">Useful Websites:</p><ul id="ce1fa8bc-0c02-4cca-b0ed-e21fcf6e101b" class="bulleted-list"><li style="list-style-type:disc"><a href="https://www.glowscript.org/">Web VPython (glowscript.org)</a></li></ul><p id="8b150141-baf3-4b7a-ade9-637154df54c0" class="">
+</p><p id="7aacbb71-f4cf-41df-aec7-b1ccd098cfc0" class=""><a href="https://github.com/skills/introduction-to-github">skills/introduction-to-github: Get started using GitHub in less than an hour.</a></p><p id="aff59a14-2243-49f6-83e4-dd25313ebb17" class="">
+</p><p id="523121c6-e39e-4d19-bb6c-66775454596a" class="">Sorting Algorithms</p><p id="ea99c218-503d-4783-a5ef-b61a2dbfb4c9" class="">
+</p><p id="772b3a4d-5d36-46cc-8d04-c62ba8e7850b" class="">In progress:</p><ul id="1cbc376f-067f-4545-ae56-ddc785d1433c" class="toggle"><li><details details=""><summary>Jupyter Magic Functions and Tricks</summary><p id="1168603f-7d11-41c0-9b21-df78d9aaad51" class="">%time</p><p id="99697cb6-4264-4be7-b57d-1c4cd6057db4" class="">%%timeit -n2 (there are always variances when you run code. Thus, -n2 runs the code multiple times)</p><p id="7355b6ad-ed67-4718-ae8a-027ec3ddece5" class="">%env</p><p id="ebec5fa7-ff74-45a8-870b-b64f94810562" class="">%matplotlib inline</p><p id="94d3c8b6-f67f-4582-8290-fd7b0932a437" class="">_ ‘underscore’ → retrieves the last command</p><p id="a9e41e45-f98e-46f5-a188-92ddbfd821cc" class="">%%SQL ‘query’ and then df = _</p><p id="5d800b58-aba8-4a2b-9c56-26cd5c1192a3" class="">%ls</p></details></li></ul><ul id="081bd3cb-b96a-4587-a9f6-98bf75df74b6" class="toggle"><li><details details=""><summary>Foobar</summary><figure id="7eeb82d4-91a7-4f22-8290-73b416042f0a"><div class="block-color-blue_background source"><a href="Google_Has_a_Secret_Hiring_Challenge_Called_Foobar___by_Fabian_Bosler___Better_Programming.pdf">Google Has a Secret Hiring Challenge Called Foobar _ by Fabian Bosler _ Better Programming.pdf</a></div></figure><ol type="1" id="33f97b2e-51d3-43e2-b588-d33fdad1ed77" class="numbered-list" start="1"><li>There is a cake that needs to be divided into all the Commander Lambda&#x27;s Minions. Some M&amp;M’s were left around the border of the cake and each piece should have the same sequence of colors. To solve the problem, each color was assigned a letter from a to z. Given a non-empty sequence of less than 200 characters, find the maximum number of portions.</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="8a27ca63-9dde-4e04-b646-f7744ded15d6" class="code"><code class="language-Python"># Sequence 
+s = &#x27;abcabcabcabcabcabcabc&#x27;
+
+# Function
+def solution(s):
+    seq = list(s)
+    div = list(filter(lambda x: (len(s) % x == 0), list(range(1,len(s) + 1))))
+    div.reverse()
+    for i in div:
+        counter = 1
+        sub_seq_len = len(s)/i
+        first_element = seq[0:int(len(s)/i)]
+        while counter &lt; i and first_element == seq[int(counter * sub_seq_len):int((1 + counter) * sub_seq_len)]:
+            counter += 1
+        if counter == i:
+            return i
+
+solution(s)</code></pre><p id="11139899-9012-4cd6-9301-66177d250c69" class="">
+</p></details></li></ul><ul id="52147090-bdbb-474f-ad9e-a40ab0601782" class="toggle"><li><details details=""><summary>Concepts</summary><ul id="efa43f17-b10f-419c-a369-e2462d45d96f" class="bulleted-list"><li style="list-style-type:disc">Deamon programs: are programs/scripts run in the background</li></ul><ul id="3961314b-0c3f-4abd-ab2b-547ed4e44bc8" class="bulleted-list"><li style="list-style-type:disc">Thread: is the execution of a program/script</li></ul></details></li></ul><ul id="278050d9-f594-46b2-8e4b-f85ed199281c" class="toggle"><li><details details=""><summary>OOP</summary><p id="4a1ced10-518e-4c6e-8778-9341a97bc7e2" class="">Class:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6dc7f416-d7d0-4802-b0a9-5806c082be41" class="code"><code class="language-Python"># Parent Class
+class airport:
+	def __init__(self,code,city,country,lanes):
+		self.Code = code
+		self.City = city
+		self.Country = country
+		self.Lanes = lanes
+	def show_description(self):
+		print(&quot;Airport {} is located in {}  {} and has {} lanes&quot;.format(self.Code,self.City,self.Country,self.Lanes)</code></pre><p id="b4e4dfce-9cf4-40d8-a0d1-e26bd949b462" class="">“<em>Self is always pointing to Current Object.”</em></p><p id="e19d5fee-d802-481f-ada1-08dd1f148307" class="">Create an instance/object:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="62374989-02fb-49c5-ae01-92e58a80c7ad" class="code"><code class="language-Python">airport_1 = airport(&quot;BOG&quot;,&quot;Bogota&quot;,&quot;Colombia&quot;,&quot;5&quot;)
+airport_1.show_description()
+
+# Terminal:
+Airport BOG is located in Bogota Colombia and has 5 lanes</code></pre><p id="491dd419-1759-49a0-bffc-69842fcecb6e" class="">Inheritance (Parent/Base/Superclass vs Child/Derived/Subclass):</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2841e333-dceb-4342-ba6d-a9bb6629fc30" class="code"><code class="language-Python"># Child Class
+class flight(airport):
+	def __init__(self,code,city,country,lanes,flight_number,status):
+		super(flight,self).__init__(code,city,country,lanes)
+		self.flight_number = flight_number
+		self.status = status</code></pre><p id="b739553a-f91c-436d-b68f-d92c258f08ae" class="">
+</p></details></li></ul><ul id="1c0171cc-41d5-4d6a-9368-b6b5b7401600" class="toggle"><li><details details=""><summary>%%capture in Jupyter | %timit MAGIC COMMANDS</summary></details></li></ul><ul id="c1819444-bd0d-4503-8639-ad5e7f6605bf" class="toggle"><li><details details=""><summary>Set-up System Environment Variable for Python</summary><p id="24f9adad-79c9-4e0d-9300-eeb996ab7832" class="">Video: <a href="https://www.youtube.com/watch?v=dNFgRUD2w68&amp;t=369s">How to Set Up Python in Visual Studio Code on Windows 10 - YouTube</a></p><p id="b0685325-927a-475c-95a5-fa42dec06493" class="">
+</p></details></li></ul><ul id="21d3c743-4eb1-442a-9122-a9ff4569de59" class="toggle"><li><details details=""><summary>Quotes</summary></details></li></ul><ul id="acbf0872-f118-4c13-8e00-d34aa4c0770c" class="toggle"><li><details details=""><summary>String Methods</summary></details></li></ul><ul id="fdd8aefa-a609-42e8-bac6-8cec5f0a0e30" class="toggle"><li><details details=""><summary>Lists</summary></details></li></ul><ul id="915e12a8-2cda-4974-834a-07e5116a7774" class="toggle"><li><details details=""><summary>Core Built-In Containers in Python (Lists, Tuples, Dictionaries, and Sets)</summary></details></li></ul><ul id="cef14cfe-32db-44b6-ab96-7f3cac0e2a17" class="toggle"><li><details details=""><summary>Operators</summary><p id="3a5e41d3-f011-4ae1-9107-a47f01b3d256" class="">Integer Division:</p><p id="5b36d294-2c2f-4b54-8162-fc8aec498cd8" class="">you can perform integer division using the <code><strong>//</strong></code> operator. Integer division truncates the result towards zero, meaning it discards the decimal part and returns the quotient as an integer.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aaf405e2-b583-4117-8adc-06c420d19152" class="code"><code class="language-Python">result = numerator // denominator</code></pre></details></li></ul><p id="9421bd33-6b94-4bf0-9ef3-c356762d9ff9" class="">add lambda assign and </p><p id="5e891e0a-0f11-4947-bdb6-45b51ab1efb4" class="">
+</p><figure id="34f7126c-418a-49d9-bd71-4cd86f5b3eb2" class="link-to-page"><a href="https://www.notion.so/Pre-program-Python-34f7126c418a49d9bd714cd86f5b3eb2?pvs=21"><span class="icon">✅</span>Pre-program Python</a></figure></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
