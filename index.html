@@ -11,14 +11,15 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #ffffff;
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            margin: 0;
         }
 
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #39ff14; /* Neon Green */
             text-shadow: 0 0 10px #39ff14, 0 0 20px #39ff14, 0 0 30px #39ff14;
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
 
         ul {
@@ -27,18 +28,21 @@
         }
 
         li {
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
         a {
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: #0d98ba; /* Neon Blue */
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 15px;
             border: 2px solid #0d98ba;
             border-radius: 5px;
             transition: all 0.3s ease-in-out;
             text-shadow: 0 0 5px #0d98ba, 0 0 10px #0d98ba;
+            display: inline-block;
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
         a:hover {
@@ -52,21 +56,49 @@
         }
 
         footer {
-            margin-top: 50px;
-            font-size: 0.9rem;
+            margin-top: 40px;
+            font-size: 0.8rem;
             color: #777;
         }
 
+        /* Responsive Design */
+        @media only screen and (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            a {
+                font-size: 1.1rem;
+                padding: 8px 12px;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        @media only screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            a {
+                font-size: 1rem;
+                padding: 6px 10px;
+            }
+
+            body {
+                padding: 5px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>NOTES</h1>
     <ul>
-        <li><a href="setting-up-redis-in-a-droplet.html">Setting-up Redis in a Ddroplet</a></li>
-	<br>
+        <li><a href="setting-up-redis-in-a-droplet.html">Setting-up Redis in a Droplet</a></li>
         <li><a href="python/python.html">Python</a></li>
-	<br>
-	<li><a href="git/git.html">Git</a></li>
+        <li><a href="git/git.html">Git</a></li>
         <!-- Add more notes as needed -->
     </ul>
     <footer>
